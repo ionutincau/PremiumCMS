@@ -4,6 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.CheckComboBox;
 
@@ -12,10 +15,42 @@ import org.controlsfx.control.CheckComboBox;
  */
 public class EventsController {
     private CheckComboBox<String> checkComboBox;
+
     @FXML
-    Button okButton;
+    private DatePicker abstractDeadlineDatePicker;
+
     @FXML
-    HBox reviewersHBox;
+    private DatePicker endDataDatePicker;
+
+    @FXML
+    private DatePicker proposalDeadlineDatePicker;
+
+    @FXML
+    private TextField nameTextField;
+
+    @FXML
+    private TextArea descriptionTextArea;
+
+    @FXML
+    private Button okButton;
+
+    @FXML
+    private DatePicker taxDeadlineDatePicker;
+
+    @FXML
+    private TextField websiteTextField;
+
+    @FXML
+    private TextField locationTextField;
+
+    @FXML
+    private DatePicker evaluationDeadlineDatePicker;
+
+    @FXML
+    private DatePicker startDateDatePicker;
+
+    @FXML
+    private HBox sessionsHBox;
 
     public EventsController()
     {
@@ -25,15 +60,15 @@ public class EventsController {
     @FXML
     public void initialize()
     {
-        // TODO replace example reviewers below with real reviewers from DB
-        ObservableList<String> reviewers = FXCollections.observableArrayList();
-        reviewers.add("Horia");
-        reviewers.add("Closca");
-        reviewers.add("Crisan");
-        checkComboBox = new CheckComboBox<String>(reviewers);
+        // TODO replace example sessionsList below with real sessionsList from DB
+        ObservableList<String> sessionsList = FXCollections.observableArrayList();
+        sessionsList.add("Horia");
+        sessionsList.add("Closca");
+        sessionsList.add("Crisan");
+        checkComboBox = new CheckComboBox<String>(sessionsList);
         checkComboBox.setPrefWidth(3000);
 
-        reviewersHBox.getChildren().add(checkComboBox);
+        sessionsHBox.getChildren().add(checkComboBox);
 
     }
 }
