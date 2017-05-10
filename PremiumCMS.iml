@@ -23,6 +23,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mysql-connector-java-5.1.41-bin" level="project" />
     <orderEntry type="library" exported="" name="Hibernate 5.2.9-5.2.9" level="project" />
-    <orderEntry type="library" name="controlsfx-8.40.12" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-8.40.12" level="project" />
   </component>
 </module>

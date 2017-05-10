@@ -1,4 +1,4 @@
-package events;
+package Events;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +13,21 @@ import org.controlsfx.control.CheckComboBox;
 /**
  * Created by Aurelian on 5/10/2017.
  */
-public class EventsController {
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import org.controlsfx.control.CheckComboBox;
+
+/**
+ * Created by Aurelian on 5/10/2017.
+ */
+public class AddEvent {
     private CheckComboBox<String> checkComboBox;
 
     @FXML
@@ -52,7 +66,7 @@ public class EventsController {
     @FXML
     private HBox sessionsHBox;
 
-    public EventsController()
+    public AddEvent()
     {
 
     }
