@@ -18,7 +18,7 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">3</property>
 
         <!-- Names the annotated entity class -->
         <mapping class="domain.User"/>
@@ -26,8 +26,8 @@
         <mapping class="domain.Proposal"/>
         <mapping class="domain.Payment"/>
         <mapping class="domain.Room"/>
-        <mapping class="domain.Document"/>
         <mapping class="domain.Presentation"/>
+        <mapping class="domain.Session"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -1,29 +1,128 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
 @Entity
 public class Proposal {
-    @Id private int id_proposal;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_proposal;
+    @Column private int id_author;
+    @Column private String other_authors;
     @Column private String name;
-    @Column private String keywwords;
+    @Column private String keywords;
     @Column private String topics;
-    @Column private String date;
+    @Column private String type;
+    @Column private Date send_date;
+    @Column private Date accept_date;
+    @Column private String status;
+    @Column private String abs;
+    @Column private String document;
+    @Column private int id_session;
 
-    public int getId_proposal() {return id_proposal;}
-    public String getName() {return name;}
-    public String getKeywwords() {return keywwords;}
-    public String getTopics() {return topics;}
-    public String getDate() {return date;}
+    public int getId_proposal() {
+        return id_proposal;
+    }
 
-    public void setId_proposal(int id_proposal) {this.id_proposal = id_proposal;}
-    public void setName(String name) {this.name = name;}
-    public void setKeywwords(String keywwords) { this.keywwords = keywwords; }
-    public void setTopics(String topics) { this.topics = topics; }
-    public void setDate(String date) { this.date = date; }
+    public void setId_proposal(int id_proposal) {
+        this.id_proposal = id_proposal;
+    }
+
+    public int getId_author() {
+        return id_author;
+    }
+
+    public void setId_author(int id_author) {
+        this.id_author = id_author;
+    }
+
+    public String getOther_authors() {
+        return other_authors;
+    }
+
+    public void setOther_authors(String other_authors) {
+        this.other_authors = other_authors;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getTopics() {
+        return topics;
+    }
+
+    public void setTopics(String topics) {
+        this.topics = topics;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Date getSend_date() {
+        return send_date;
+    }
+
+    public void setSend_date(Date send_date) {
+        this.send_date = send_date;
+    }
+
+    public Date getAccept_date() {
+        return accept_date;
+    }
+
+    public void setAccept_date(Date accept_date) {
+        this.accept_date = accept_date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getAbs() {
+        return abs;
+    }
+
+    public void setAbs(String abs) {
+        this.abs = abs;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public int getId_session() {
+        return id_session;
+    }
+
+    public void setId_session(int id_session) {
+        this.id_session = id_session;
+    }
 }

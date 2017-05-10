@@ -1,13 +1,15 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.concurrent.ArrayBlockingQueue;
 
 @Entity
 public class User {
 
-    @Id private int userId;
+    @Id  private int userId;
+    @Column @OneToMany private Collection<Payment> payment=new ArrayList<Payment>();
     @Column private String userName;
     @Column private String password;
     @Column private String lastName;
@@ -17,6 +19,7 @@ public class User {
     @Column private String affiliation;
     @Column private String email;
     @Column private String phone;
+    @Column String webPage;
 
     public int getUserId() {
         return userId;
@@ -25,6 +28,10 @@ public class User {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public Collection<Payment> getPayment() {return payment;}
+
+    void setPayment(Collection<Payment> payment) {this.payment = payment;}
 
     public String getUserName() {
         return userName;
@@ -106,6 +113,6 @@ public class User {
         this.webPage = webPage;
     }
 
-    @Column String webPage;
+
 
 }
