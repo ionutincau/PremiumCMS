@@ -1,4 +1,4 @@
-package events;
+package Events;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,21 +10,19 @@ import org.controlsfx.control.CheckComboBox;
 /**
  * Created by Aurelian on 5/10/2017.
  */
-public class EventsController {
-    private CheckComboBox<String> checkComboBox;
-    @FXML
-    Button okButton;
-    @FXML
-    HBox reviewersHBox;
 
-    public EventsController()
-    {
+public class AddEvent {
+
+    private CheckComboBox<String> checkComboBox;
+    @FXML Button okButton;
+    @FXML HBox reviewersHBox;
+
+    public AddEvent() {
 
     }
 
     @FXML
-    public void initialize()
-    {
+    public void initialize() {
         // TODO replace example reviewers below with real reviewers from DB
         ObservableList<String> reviewers = FXCollections.observableArrayList();
         reviewers.add("Horia");

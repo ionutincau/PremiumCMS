@@ -8,9 +8,9 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <!-- Assume test is the database name -->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cms</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:mysql://sql11.freesqldatabase.com:3306/sql11173704</property>
+        <property name="hibernate.connection.username">sql11173704</property>
+        <property name="hibernate.connection.password">XmgtWHub76</property>
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
@@ -28,7 +28,6 @@
         <mapping class="domain.Room"/>
         <mapping class="domain.Document"/>
         <mapping class="domain.Presentation"/>
-
 
     </session-factory>
 </hibernate-configuration>
