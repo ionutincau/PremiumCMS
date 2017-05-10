@@ -1,23 +1,23 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
 @Entity
 public class Payment {
-    @Id private int id_payments;
-    @Column private int id_user;
-    @Column private String date;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_payment;
+    @Column private Date date;
 
-    public int getId_payments() {return id_payments;}
-    public void setId_payments(int id_payments) {this.id_payments = id_payments;}
-    public int getId_user() {return id_user;}
-    public void setId_user(int id_user) {this.id_user = id_user;}
-    public String getDate() {return date;}
-    public void setDate(String date) {this.date = date;}
+
+
+    public int getId_payment() {return id_payment;}
+    public void setId_payment(int id_payment) {this.id_payment = id_payment;}
+    public Date getDate() {return date;}
+    public void setDate(Date date) {this.date = date;}
 
 }

@@ -1,15 +1,13 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
 @Entity
 public class Presentation {
-    @Id private int id_presentation;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_presentation;
     @Column private int id_section;
     @Column private String speaker;
     @Column private String demo;

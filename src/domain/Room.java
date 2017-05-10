@@ -1,15 +1,13 @@
 package domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
 @Entity
 public class Room {
-    @Id private int id_room;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_room;
     @Column private String name;
     @Column private String location;
     @Column private int nr_sits;
