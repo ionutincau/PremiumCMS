@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sessions.AddSessionUIController">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="110.0" prefWidth="110.0" text="Name" />
+                        <TextField id="sessionNameTextField" fx:id="sessionNameTextField" prefWidth="3000.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="110.0" prefWidth="110.0" text="Room" />
+                        <ChoiceBox id="sessionRoomChoiceBox" fx:id="sessionRoomChoiceBox" prefWidth="3000.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="110.0" prefWidth="110.0" text="Date in" />
+                        <DatePicker id="sessionDateInDatePicker" fx:id="sessionDateInDatePicker" prefWidth="3000.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="110.0" prefWidth="110.0" text="Date out" />
+                        <DatePicker id="sessionDateOutDatePicker" fx:id="sessionDateOutDatePicker" prefWidth="3000.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="110.0" prefWidth="110.0" text="President" />
+                        <ChoiceBox id="sessionPresidentChoiceBox" fx:id="sessionPresidentChoiceBox" prefWidth="3000.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0" prefHeight="50.0" prefWidth="450.0" VBox.vgrow="NEVER">
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="OK" />
+                    </children>
+                </HBox>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets left="20.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Tab text="Sessions" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sessions.SessionsTabUIController">
+    <content>
+        <AnchorPane>
+            <children>
+                <ListView id="sessionsListView" fx:id="sessionsListView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <HBox alignment="CENTER" maxHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="200.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Button id="addSessionButton" fx:id="addSessionButton" mnemonicParsing="false" prefWidth="60.0" text="Add" />
+                        <Button id="editSessionButton" fx:id="editSessionButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="60.0" text="Edit" />
+                        <Button id="deleteSessionButton" fx:id="deleteSessionButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="60.0" text="Delete" />
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </content>
+</Tab>

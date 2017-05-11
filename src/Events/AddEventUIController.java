@@ -27,7 +27,7 @@ import org.controlsfx.control.CheckComboBox;
 /**
  * Created by Aurelian on 5/10/2017.
  */
-public class AddEvent {
+public class AddEventUIController {
     private CheckComboBox<String> checkComboBox;
 
     @FXML
@@ -66,7 +66,7 @@ public class AddEvent {
     @FXML
     private HBox sessionsHBox;
 
-    public AddEvent()
+    public AddEventUIController()
     {
 
     }

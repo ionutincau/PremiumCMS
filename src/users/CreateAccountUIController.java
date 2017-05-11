@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 /**
  * Created by Aurelian on 5/10/2017.
  */
-public class UsersController {
+public class CreateAccountUIController {
 
     @FXML
     private TextField countryTextField;
@@ -45,7 +45,7 @@ public class UsersController {
     @FXML
     private TextField usernameTextField;
 
-    public UsersController()
+    public CreateAccountUIController()
     {
 
     }
