@@ -7,13 +7,21 @@ import java.sql.Date;
  * Created by ASUS on 04.May.2017.
  */
 @Entity
-public class Session {
+public class Sesiune {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_session;
     @Column private String name;
     @Column private int id_room;
     @Column private Date date_in;
     @Column private Date date_out;
     @Column private String president;
+
+    public Sesiune(String name, int id_room, Date date_in, Date date_out, String president) {
+        this.name = name;
+        this.id_room = id_room;
+        this.date_in = date_in;
+        this.date_out = date_out;
+        this.president = president;
+    }
 
     public int getId_session() {return id_session;}
     public void setId_session(int id_session) {this.id_session = id_session;}

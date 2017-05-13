@@ -1,5 +1,6 @@
 package Login;
 
+import domain.User;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ public class loginUI {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Tab loginTab;
+    @FXML private TabPane tabPane;
 
     private LoginController loginController;
 
@@ -32,7 +34,15 @@ public class loginUI {
         catch (Exception e) {
             showInfo(e.getMessage());
         }
-        if (loginController.getUser() != null) {
+//        if (loginController.getUser() != null) {
+//            addTabs("Admin");
+//            closeTab(loginTab);
+//        }
+        User user=loginController.getUser();
+        if (user!=null)
+        {
+            closeTab(loginTab);
+            addTabs(user.getType());
             closeTab(loginTab);
         }
     }
@@ -43,7 +53,29 @@ public class loginUI {
         alert.setHeaderText(info);
         alert.show();
     }
+    public void addTabs(String usertype) {
+        try {
+            if (usertype.equals("admin"))
+            {
+                Tab Sesiune = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
+                tabPane.getTabs().add(Sesiune);
 
+            }
+            if (usertype.equals("participant"))
+            {
+
+            }
+            if (usertype.equals("spectator"))
+            {
+
+            }
+        }
+        catch (IOException ex) {
+           // UtilFunctions.showInfo("Application can't manage usertype " + usertype + "\nContact system administrator");
+        }
+
+
+    }
     // todo:
     private void closeTab(Tab tab) {
         EventHandler<Event> handler = tab.getOnClosed();
@@ -53,4 +85,5 @@ public class loginUI {
             tab.getTabPane().getTabs().remove(tab);
         }
     }
+
 }
