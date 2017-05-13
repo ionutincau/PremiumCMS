@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane id="tabPane" fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.loginUI">
+<TabPane id="tabPane" fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.loginUI">
   <tabs>
     <Tab id="loginTab" fx:id="loginTab" text="Login">
       <content>
@@ -16,7 +16,7 @@
                         <TextField id="usernameField" fx:id="usernameField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Username" />
                         <PasswordField id="passwordField" fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Password" />
                         <Button id="loginButton" fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="100.0" text="Login" />
-                        <Button id="loginButton" fx:id="loginButton1" layoutX="460.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="100.0" text="Create account" />
+                        <Button id="createButton" fx:id="createButton" layoutX="460.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#createAccount" prefHeight="25.0" prefWidth="100.0" text="Create account" />
                      </children>
                      <padding>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />

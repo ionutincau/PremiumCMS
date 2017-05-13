@@ -4,7 +4,10 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -37,6 +40,20 @@ public class loginUI {
         }
     }
 
+    public void createAccount() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../User/create_account.fxml"));
+            AnchorPane root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Create new account");
+            stage.setScene(new Scene(root, 750, 500));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showInfo(String info) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -49,7 +66,8 @@ public class loginUI {
         EventHandler<Event> handler = tab.getOnClosed();
         if (null != handler) {
             handler.handle(null);
-        } else {
+        }
+        else {
             tab.getTabPane().getTabs().remove(tab);
         }
     }

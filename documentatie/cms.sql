@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2017 at 03:31 PM
+-- Generation Time: May 10, 2017 at 06:55 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -85,8 +85,8 @@ CREATE TABLE `pc-prop` (
 
 CREATE TABLE `prezentari` (
   `id_prezentare` int(11) NOT NULL,
-  `id_sesiune` int(11) NOT NULL,
   `speaker` int(11) NOT NULL,
+  `id_sesiune` int(11) NOT NULL,
   `rezumat` varchar(200) COLLATE utf8_unicode_520_ci NOT NULL,
   `nume` varchar(30) COLLATE utf8_unicode_520_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
@@ -99,16 +99,18 @@ CREATE TABLE `prezentari` (
 
 CREATE TABLE `propuneri` (
   `id_propunere` int(11) NOT NULL,
+  `id_autor` int(11) NOT NULL,
+  `alti_autori` varchar(200) COLLATE utf8_unicode_520_ci NOT NULL,
   `nume` varchar(20) COLLATE utf8_unicode_520_ci NOT NULL,
   `keywords` varchar(30) COLLATE utf8_unicode_520_ci NOT NULL,
   `topics` varchar(30) COLLATE utf8_unicode_520_ci NOT NULL,
   `tip` varchar(20) COLLATE utf8_unicode_520_ci NOT NULL,
   `data_trimitere` date NOT NULL,
-  `data_acceptare` int(11) DEFAULT NULL,
+  `data_acceptare` date DEFAULT NULL,
   `status` varchar(20) COLLATE utf8_unicode_520_ci NOT NULL,
-  `id_sesiune` int(11) NOT NULL,
   `abstract` longblob NOT NULL,
-  `document` longblob NOT NULL
+  `document` longblob NOT NULL,
+  `id_sesiune` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -147,19 +149,7 @@ CREATE TABLE `sesiuni` (
 
 CREATE TABLE `tranzactii` (
   `id_tranzactie` int(11) NOT NULL,
-  `id_utilizator` int(11) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user-prop`
---
-
-CREATE TABLE `user-prop` (
-  `id_utilizator` int(11) NOT NULL,
-  `id_propunere` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -191,7 +181,8 @@ CREATE TABLE `utilizatori` (
   `email` varchar(20) COLLATE utf8_unicode_520_ci NOT NULL,
   `afiliere` varchar(20) COLLATE utf8_unicode_520_ci DEFAULT NULL,
   `telefon` varchar(20) COLLATE utf8_unicode_520_ci DEFAULT NULL,
-  `web-page` varchar(20) COLLATE utf8_unicode_520_ci DEFAULT NULL
+  `web-page` varchar(20) COLLATE utf8_unicode_520_ci DEFAULT NULL,
+  `id_tranzactie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 --
@@ -238,7 +229,8 @@ ALTER TABLE `prezentari`
 --
 ALTER TABLE `propuneri`
   ADD PRIMARY KEY (`id_propunere`),
-  ADD KEY `id_sectiune` (`id_sesiune`);
+  ADD KEY `id_sectiune` (`id_sesiune`),
+  ADD KEY `id_autor` (`id_autor`);
 
 --
 -- Indexes for table `sali`
@@ -258,15 +250,7 @@ ALTER TABLE `sesiuni`
 -- Indexes for table `tranzactii`
 --
 ALTER TABLE `tranzactii`
-  ADD PRIMARY KEY (`id_tranzactie`),
-  ADD KEY `id_utilizator` (`id_utilizator`);
-
---
--- Indexes for table `user-prop`
---
-ALTER TABLE `user-prop`
-  ADD KEY `id_utilizator` (`id_utilizator`),
-  ADD KEY `id_propunere` (`id_propunere`);
+  ADD PRIMARY KEY (`id_tranzactie`);
 
 --
 -- Indexes for table `user-sesiune`
@@ -279,7 +263,8 @@ ALTER TABLE `user-sesiune`
 -- Indexes for table `utilizatori`
 --
 ALTER TABLE `utilizatori`
-  ADD PRIMARY KEY (`id_utilizator`);
+  ADD PRIMARY KEY (`id_utilizator`),
+  ADD KEY `id_tranzactie` (`id_tranzactie`);
 
 --
 -- Constraints for dumped tables
@@ -317,7 +302,8 @@ ALTER TABLE `prezentari`
 -- Constraints for table `propuneri`
 --
 ALTER TABLE `propuneri`
-  ADD CONSTRAINT `propuneri_ibfk_1` FOREIGN KEY (`id_sesiune`) REFERENCES `sesiuni` (`id_sesiune`);
+  ADD CONSTRAINT `propuneri_ibfk_1` FOREIGN KEY (`id_sesiune`) REFERENCES `sesiuni` (`id_sesiune`),
+  ADD CONSTRAINT `propuneri_ibfk_2` FOREIGN KEY (`id_autor`) REFERENCES `utilizatori` (`id_utilizator`);
 
 --
 -- Constraints for table `sesiuni`
@@ -327,24 +313,17 @@ ALTER TABLE `sesiuni`
   ADD CONSTRAINT `sesiuni_ibfk_2` FOREIGN KEY (`id_sala`) REFERENCES `sali` (`id_sala`);
 
 --
--- Constraints for table `tranzactii`
---
-ALTER TABLE `tranzactii`
-  ADD CONSTRAINT `tranzactii_ibfk_1` FOREIGN KEY (`id_utilizator`) REFERENCES `utilizatori` (`id_utilizator`);
-
---
--- Constraints for table `user-prop`
---
-ALTER TABLE `user-prop`
-  ADD CONSTRAINT `user-prop_ibfk_1` FOREIGN KEY (`id_propunere`) REFERENCES `propuneri` (`id_propunere`),
-  ADD CONSTRAINT `user-prop_ibfk_2` FOREIGN KEY (`id_utilizator`) REFERENCES `utilizatori` (`id_utilizator`);
-
---
 -- Constraints for table `user-sesiune`
 --
 ALTER TABLE `user-sesiune`
   ADD CONSTRAINT `user-sesiune_ibfk_1` FOREIGN KEY (`id_utilizator`) REFERENCES `utilizatori` (`id_utilizator`),
   ADD CONSTRAINT `user-sesiune_ibfk_2` FOREIGN KEY (`id_sesiune`) REFERENCES `sesiuni` (`id_sesiune`);
+
+--
+-- Constraints for table `utilizatori`
+--
+ALTER TABLE `utilizatori`
+  ADD CONSTRAINT `utilizatori_ibfk_1` FOREIGN KEY (`id_tranzactie`) REFERENCES `tranzactii` (`id_tranzactie`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

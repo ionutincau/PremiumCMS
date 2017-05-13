@@ -3,13 +3,12 @@ package domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.concurrent.ArrayBlockingQueue;
 
 @Entity
 public class User {
 
     @Id  private int userId;
-    @Column @OneToMany private Collection<Payment> payment=new ArrayList<Payment>();
+    @Column @OneToMany private Collection<Payment> payment = new ArrayList<>();
     @Column private String userName;
     @Column private String password;
     @Column private String lastName;
@@ -112,7 +111,4 @@ public class User {
     public void setWebPage(String webPage) {
         this.webPage = webPage;
     }
-
-
-
 }
