@@ -1,5 +1,6 @@
 package Login;
 
+import Utils.UtilFunctions;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,7 +34,7 @@ public class loginUI {
             loginController.login(usernameField.getText(), passwordField.getText());
         }
         catch (Exception e) {
-            showInfo(e.getMessage());
+            UtilFunctions.showInfo(e.getMessage());
         }
         if (loginController.getUser() != null) {
             closeTab(loginTab);
@@ -52,13 +53,6 @@ public class loginUI {
         catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void showInfo(String info) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(info);
-        alert.show();
     }
 
     // todo:

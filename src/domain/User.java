@@ -7,13 +7,14 @@ import java.util.Collection;
 @Entity
 public class User {
 
-    @Id  private int userId;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int userId;
     @Column @OneToMany private Collection<Payment> payment = new ArrayList<>();
     @Column private String userName;
     @Column private String password;
     @Column private String lastName;
     @Column private String firstName;
     @Column private String type;
+    @Column private String status;
     @Column private String country;
     @Column private String affiliation;
     @Column private String email;
@@ -70,6 +71,14 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String type) {
+        this.status = status;
     }
 
     public String getCountry() {

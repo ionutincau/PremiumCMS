@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by ASUS on 04.May.2017.
  */
 @Entity
-public class Session {
+public class Sesiune {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_session;
     @Column private String name;
     @Column private int id_room;

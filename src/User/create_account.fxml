@@ -40,8 +40,8 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="330.0" prefHeight="40.0" prefWidth="200.0">
                     <children>
-                        <Label minWidth="100.0" text="Status" />
-                        <ChoiceBox id="statusChoiceBox" fx:id="statusChoiceBox" prefWidth="700.0" HBox.hgrow="ALWAYS" />
+                        <Label minWidth="100.0" text="Type" />
+                        <ChoiceBox id="statusChoiceBox" fx:id="typeChoiceBox" prefWidth="700.0" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="430.0" prefHeight="40.0" prefWidth="200.0">

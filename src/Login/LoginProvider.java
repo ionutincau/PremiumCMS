@@ -3,9 +3,11 @@ package Login;
 import database.DatabaseConnection;
 import domain.User;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 /**
- * Created by ionut on 09-Apr-17.
+ * Created by Incau Ionut on 14-Mar-17.
+ * Contact: ionut.incau@gmail.com
  */
 
 public class LoginProvider {
@@ -18,8 +20,9 @@ public class LoginProvider {
         Session session = DatabaseConnection.getInstance().openSession();
         session.beginTransaction();
 
-        // todo: get by username
-        User user = session.get(User.class, 1);
+        Query query = session.createQuery("from User where userName=:userName");
+        query.setParameter("userName", username);
+        User user = (User) query.uniqueResult();
 
         session.getTransaction().commit();
         session.close();

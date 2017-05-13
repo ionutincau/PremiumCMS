@@ -27,7 +27,7 @@
         <mapping class="domain.Payment"/>
         <mapping class="domain.Room"/>
         <mapping class="domain.Presentation"/>
-        <mapping class="domain.Session"/>
+        <mapping class="domain.Sesiune"/>
 
     </session-factory>
 </hibernate-configuration>
