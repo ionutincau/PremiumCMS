@@ -21,6 +21,7 @@ public class loginUI {
 
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private TabPane tabPane;
     @FXML private Tab loginTab;
 
     private LoginController loginController;
@@ -38,6 +39,15 @@ public class loginUI {
         }
         if (loginController.getUser() != null) {
             closeTab(loginTab);
+
+            //todo: remove temp for test
+            try {
+                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
+                tabPane.getTabs().add(pending);
+            }
+            catch (Exception e) {
+
+            }
         }
     }
 
