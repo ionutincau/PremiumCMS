@@ -6,6 +6,7 @@ import javafx.scene.control.ListView;
 import org.omg.CORBA.NO_RESOURCES;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -35,8 +36,10 @@ public class SessionsTabUIController {
     public void initialize(URL fxmlFileLocation, ResourceBundle resourceBucccndle)
     {
         sessionsListView.setFixedCellSize(48);
-        sessionsListView.getItems().addAll(0,controller.getSesiune());
+        sessionsListView.getItems().addAll(0,(ArrayList)controller.getSesiune());
         SesiuneADD();
+        SesiuneEdit();
+        SesiuneDelete();
 
     }
 }
