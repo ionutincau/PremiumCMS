@@ -1,5 +1,7 @@
 package domain;
 
+import Sessions.SesiuneProvider;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -23,6 +25,9 @@ public class Sesiune {
         this.president = president;
     }
 
+    public Sesiune() {
+    }
+
     public int getId_session() {return id_session;}
     public void setId_session(int id_session) {this.id_session = id_session;}
     public String getName() {return name;}
@@ -36,4 +41,13 @@ public class Sesiune {
     public String getPresident() {return president;}
     public void setPresident(String president) {this.president = president;}
 
+    @Override
+    public String toString()
+    {
+        return "name='" + name +
+                ", id_room=" + id_room +
+                ", date_in=" + date_in +
+                ", date_out=" + date_out +
+                ", president='" + president;
+    }
 }

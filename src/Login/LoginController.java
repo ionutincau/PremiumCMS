@@ -9,11 +9,19 @@ import domain.User;
 
 public class LoginController {
 
+    private static LoginController instance;
     private LoginProvider loginProvider;
     private User user;
 
     public LoginController() {
         loginProvider = new LoginProvider();
+    }
+
+    public static LoginController getInstance() {
+        if (instance == null){
+            instance = new LoginController();
+        }
+        return instance;
     }
 
     public void login (String username, String password) throws Exception {

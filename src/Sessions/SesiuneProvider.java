@@ -1,6 +1,7 @@
 package Sessions;
 
 import domain.Sesiune;
+import domain.User;
 import org.hibernate.*;
 import org.hibernate.Cache;
 import org.hibernate.boot.spi.SessionFactoryOptions;
@@ -44,11 +45,7 @@ public class SesiuneProvider
         SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
         Session session=sessionFactory.openSession();
         session.beginTransaction();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Sesiune> criteria = builder.createQuery(Sesiune.class);
-        Root<Sesiune> SesiuneRoot = criteria.from(Sesiune.class);
-        criteria.select(SesiuneRoot);
-        sesiunes=session.createQuery(criteria).getResultList();
+        sesiunes=session.createQuery("from Sesiune ").getResultList();
         session.getTransaction().commit();
         session.close();
         return sesiunes;
@@ -83,5 +80,59 @@ public class SesiuneProvider
         session.getTransaction().commit();
         session.close();
         return id;
+    }
+    public List<String> getC()
+    {
+
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        String hql = "SELECT concat(firstName, ' ' ,lastName) AS fullname FROM User where type='pc'";
+        Query query = session.createQuery(hql);
+        List results = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return results;
+    }
+    public List<String> getRoom()
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "SELECT name FROM Room ";
+        Query query = session.createQuery(hql);
+        List<String> results = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return results;
+    }
+    public int getIdRoomFromName(String name)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        String hql = "SELECT id_room FROM Room where name=:name";
+        Query query = session.createQuery(hql);
+        query.setParameter("name", name);
+        int id_room=(int)query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return id_room;
+    }
+    public String getRoomNameById(int id_room)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        String hql = "SELECT id_room FROM Room where id_room=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", id_room);
+        String RoomName=(String) query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return RoomName;
     }
 }

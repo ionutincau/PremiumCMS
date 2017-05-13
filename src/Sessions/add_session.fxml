@@ -41,7 +41,7 @@
                 </HBox>
                 <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0" prefHeight="50.0" prefWidth="450.0" VBox.vgrow="NEVER">
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="OK" />
+                        <Button id="buttonOkId" fx:id="buttonOkId" mnemonicParsing="false" prefWidth="50.0" text="OK" />
                     </children>
                 </HBox>
             </children>
