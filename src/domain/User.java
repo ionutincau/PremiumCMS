@@ -77,7 +77,7 @@ public class User {
         return status;
     }
 
-    public void setStatus(String type) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -119,5 +119,10 @@ public class User {
 
     public void setWebPage(String webPage) {
         this.webPage = webPage;
+    }
+
+    @Override
+    public String toString() {
+        return "    " + type + "    " + firstName + "    " + lastName + "    " + country + "    " + affiliation;
     }
 }

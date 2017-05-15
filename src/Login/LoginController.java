@@ -35,6 +35,9 @@ public class LoginController {
         else if (!user.getPassword().equals(password)) {
             throw new Exception("Wrong password!");
         }
+        else if (user.getStatus().equals("pending")) {
+            throw new Exception("Your account needs approval!");
+        }
         this.user = user;
     }
 

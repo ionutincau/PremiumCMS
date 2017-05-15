@@ -3,7 +3,6 @@ package User;
 import database.DatabaseConnection;
 import domain.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -16,9 +15,7 @@ import java.util.List;
 
 public class PendingTabUI {
 
-    @FXML private Button deleteUserButton;
     @FXML private ListView pendingUsersListView;
-    @FXML private Button approveUserButton;
 
     public PendingTabUI() {
 
@@ -28,21 +25,39 @@ public class PendingTabUI {
         Session session = DatabaseConnection.getInstance().openSession();
         session.beginTransaction();
 
-        // todo: get a list of pending users
-        Query query = session.createQuery("from User where status=:status");
-        query.setParameter("status", "pending");
+        Query query = session.createQuery("FROM User U WHERE U.status = :s");
+        query.setParameter("s","pending");
         List list = query.list();
 
         session.getTransaction().commit();
         session.close();
 
-        for (Object u : list) {
-            System.out.println("");
-            System.out.println("");
-            System.out.println(((User)u).getUserName() + ((User)u).getStatus());
-        }
-
         pendingUsersListView.setFixedCellSize(48);
         pendingUsersListView.getItems().addAll(list);
+    }
+
+    public void approve() {
+        Session session = DatabaseConnection.getInstance().openSession();
+        session.beginTransaction();
+
+        User user = (User) pendingUsersListView.getSelectionModel().getSelectedItem();
+        pendingUsersListView.getItems().remove(user);
+        user.setStatus("approved");
+        session.update(user);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void delete () {
+        Session session = DatabaseConnection.getInstance().openSession();
+        session.beginTransaction();
+
+        User user = (User) pendingUsersListView.getSelectionModel().getSelectedItem();
+        pendingUsersListView.getItems().remove(user);
+        session.remove(user);
+
+        session.getTransaction().commit();
+        session.close();
     }
 }

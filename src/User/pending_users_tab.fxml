@@ -13,8 +13,8 @@
                         <ListView id="pendingUsersListView" fx:id="pendingUsersListView" prefHeight="3500.0" prefWidth="1000.0" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER" minHeight="45.0" prefHeight="45.0" prefWidth="1000.0" spacing="40.0" VBox.vgrow="NEVER">
                             <children>
-                                <Button id="approveUserButton" fx:id="approveUserButton" maxHeight="-Infinity" mnemonicParsing="false" prefWidth="75.0" text="Approve" />
-                                <Button id="deleteUserButton" fx:id="deleteUserButton" maxHeight="-Infinity" mnemonicParsing="false" prefWidth="75.0" text="Delete" />
+                                <Button id="approveUserButton" fx:id="approveUserButton" onAction="#approve" maxHeight="-Infinity" mnemonicParsing="false" prefWidth="75.0" text="Approve" />
+                                <Button id="deleteUserButton" fx:id="deleteUserButton" onAction="#delete" maxHeight="-Infinity" mnemonicParsing="false" prefWidth="75.0" text="Delete" />
                             </children>
                         </HBox>
                     </children>
