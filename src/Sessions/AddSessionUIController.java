@@ -64,10 +64,10 @@ public class AddSessionUIController implements Initializable{
             sessionDateInDatePicker.setVisible(true);
             sessionDateOutDatePicker.setVisible(true);
             sessionPresidentChoiceBox.setItems(FXCollections.observableArrayList(controller.AllPc()));
-            if (!sesiune.equals("")) {
-                sessionPresidentChoiceBox.setValue("Normal");
+            if (!sesiune.getPresident().equals("")) {
+                sessionPresidentChoiceBox.setValue(sesiune.getPresident());
             }
-            if (!controller.getRoom(sesiune.getId_room()).equals(null))
+            if (!controller.getRoom(sesiune.getId_room()).equals(""))
             {
                 sessionRoomChoiceBox.setValue(controller.getRoom((sesiune.getId_room())));
             }
