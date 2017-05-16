@@ -56,9 +56,12 @@ public class loginUI {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 Tab sesiuneTab = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
                 Tab evenimentTab = FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
+                Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
                 tabPane.getTabs().add(pending);
                 tabPane.getTabs().add(sesiuneTab);
                 tabPane.getTabs().add(evenimentTab);
+                tabPane.getTabs().add(propuneriTab);
+
             }
             if (usertype.equals("pc")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));

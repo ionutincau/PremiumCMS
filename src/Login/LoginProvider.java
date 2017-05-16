@@ -22,7 +22,6 @@ public class LoginProvider {
 
         Query query = session.createQuery("from User where userName=:userName");
         query.setParameter("userName", username);
-        System.out.println("Da");
         User user = (User) query.uniqueResult();
 
         session.getTransaction().commit();
