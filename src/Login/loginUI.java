@@ -39,18 +39,41 @@ public class loginUI {
         }
         if (loginController.getUser() != null) {
             closeTab(loginTab);
-
+            addTabs(loginController.getUser().getType());
             //todo: remove temp for test
-            try {
+//            try {
+//                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
+//                tabPane.getTabs().add(pending);
+//            }
+//            catch (Exception e) {
+//
+//            }
+        }
+    }
+    public void addTabs(String usertype) {
+        try {
+            if (usertype.equals("Admin")) {
+                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
+                Tab sesiuneTab = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
+                Tab evenimentTab = FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
+                tabPane.getTabs().add(pending);
+                tabPane.getTabs().add(evenimentTab);
+                tabPane.getTabs().add(sesiuneTab);
+            }
+            if (usertype.equals("pc")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 tabPane.getTabs().add(pending);
             }
-            catch (Exception e) {
+            if (usertype.equals("particitapnti"))
+            {
 
             }
+
+        }
+        catch (IOException ex) {
+            UtilFunctions.showInfo("Application can't manage usertype " + usertype + "\nContact system administrator");
         }
     }
-
     public void createAccount() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../User/create_account.fxml"));
