@@ -127,7 +127,7 @@ public class SesiuneProvider
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        String hql = "SELECT id_room FROM Room where id_room=:id";
+        String hql = "SELECT name FROM Room where id_room=:id";
         Query query = session.createQuery(hql);
         query.setParameter("id", id_room);
         String RoomName=(String) query.getSingleResult();
@@ -135,4 +135,5 @@ public class SesiuneProvider
         session.close();
         return RoomName;
     }
+
 }

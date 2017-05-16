@@ -15,6 +15,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -58,13 +59,22 @@ public class AddSessionUIController implements Initializable{
         }
         else
         {
-
             sessionPresidentChoiceBox.setVisible(true);
             sessionRoomChoiceBox.setVisible(true);
             sessionDateInDatePicker.setVisible(true);
             sessionDateOutDatePicker.setVisible(true);
             sessionPresidentChoiceBox.setItems(FXCollections.observableArrayList(controller.AllPc()));
+            if (!sesiune.equals("")) {
+                //sessionPresidentChoiceBox.setValue("Normal");
+            }
+            if (!controller.getRoom(sesiune.getId_room()).equals(null))
+            {
+                //sessionRoomChoiceBox.setValue(controller.getRoom(sesiune.getId_room()));
+            }
             sessionRoomChoiceBox.setItems(FXCollections.observableArrayList(controller.AllRoom()));
+            sessionDateInDatePicker.setValue(sesiune.getDate_in().toLocalDate());
+            sessionDateOutDatePicker.setValue(sesiune.getDate_out().toLocalDate());
+            sessionNameTextField.setText(sesiune.getName());
             buttonOkId.setOnAction(e->Edit());
         }
     }

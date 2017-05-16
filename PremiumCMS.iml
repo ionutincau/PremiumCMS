@@ -25,5 +25,6 @@
     <orderEntry type="library" exported="" name="Hibernate 5.2.9-5.2.9" level="project" />
     <orderEntry type="library" exported="" name="controlsfx-8.40.12" level="project" />
     <orderEntry type="library" name="org.controlsfx:controlsfx:8.40.12" level="project" />
+    <orderEntry type="library" name="org.controlsfx:controlsfx-samples:8.40.12" level="project" />
   </component>
 </module>
