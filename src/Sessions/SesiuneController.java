@@ -16,7 +16,7 @@ public class SesiuneController extends Observable{
     public List<Sesiune> getSesiune()
     {
         sesiunes=provider.select();
-        System.out.println(sesiunes);
+        //System.out.println(sesiunes);
         return sesiunes;
     }
 
@@ -65,6 +65,9 @@ public class SesiuneController extends Observable{
     {
         return provider.getRoom();
     }
-
+    public String getRoom(int id)
+    {
+        return provider.getRoomNameById(id);
+    }
     //Merge naspa
 }

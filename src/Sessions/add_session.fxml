@@ -36,7 +36,7 @@
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Label minWidth="110.0" prefWidth="110.0" text="President" />
-                        <ChoiceBox id="sessionPresidentChoiceBox" fx:id="sessionPresidentChoiceBox" prefWidth="3000.0" />
+                        <ChoiceBox id="sessionPresidentChoiceBox" fx:id="sessionPresidentChoiceBox" prefWidth="3000.0" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0" prefHeight="50.0" prefWidth="450.0" VBox.vgrow="NEVER">

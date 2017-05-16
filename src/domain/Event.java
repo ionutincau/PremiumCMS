@@ -2,6 +2,8 @@ package domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by ASUS on 04.May.2017.
@@ -10,6 +12,7 @@ import java.sql.Date;
 public class Event {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_event;
+    //@ManyToMany(mappedBy = "event") private Collection<User> user= new ArrayList<User>();
     @Column private String name;
     @Column private Date start;
     @Column private Date end;
@@ -20,6 +23,23 @@ public class Event {
     @Column private Date d_proposal;
     @Column private Date d_evaluation;
     @Column private Date d_taxes;
+
+    public Event(String name, Date start, Date end, String web_page, String location, String description, Date d_abstract, Date d_proposal, Date d_evaluation, Date d_taxes)
+    {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.web_page = web_page;
+        this.location = location;
+        this.description = description;
+        this.d_abstract = d_abstract;
+        this.d_proposal = d_proposal;
+        this.d_evaluation = d_evaluation;
+        this.d_taxes = d_taxes;
+    }
+
+    public Event() {
+    }
 
     public int getId_event() {return id_event;}
     public String getName() {return name;}

@@ -10,7 +10,7 @@
             <children>
                 <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <ListView prefHeight="611.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
+                        <ListView id="eventsListView" fx:id="eventsListView" prefHeight="611.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1000.0" spacing="40.0" VBox.vgrow="NEVER">
                             <children>
                                 <Button id="addEventButton" fx:id="addEventButton" mnemonicParsing="false" text="Add" />
