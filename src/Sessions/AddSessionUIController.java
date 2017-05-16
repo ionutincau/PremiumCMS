@@ -24,14 +24,14 @@ import java.util.ResourceBundle;
 public class AddSessionUIController implements Initializable{
 
     @FXML
-    private ChoiceBox<?> sessionPresidentChoiceBox;
+    private ChoiceBox<String> sessionPresidentChoiceBox;
     @FXML
     private Button buttonOkId;
     @FXML
     private DatePicker sessionDateOutDatePicker;
 
     @FXML
-    private ChoiceBox<?> sessionRoomChoiceBox;
+    private ChoiceBox<String> sessionRoomChoiceBox;
 
     @FXML
     private DatePicker sessionDateInDatePicker;
@@ -65,11 +65,11 @@ public class AddSessionUIController implements Initializable{
             sessionDateOutDatePicker.setVisible(true);
             sessionPresidentChoiceBox.setItems(FXCollections.observableArrayList(controller.AllPc()));
             if (!sesiune.equals("")) {
-                //sessionPresidentChoiceBox.setValue("Normal");
+                sessionPresidentChoiceBox.setValue("Normal");
             }
             if (!controller.getRoom(sesiune.getId_room()).equals(null))
             {
-                //sessionRoomChoiceBox.setValue(controller.getRoom(sesiune.getId_room()));
+                sessionRoomChoiceBox.setValue(controller.getRoom((sesiune.getId_room())));
             }
             sessionRoomChoiceBox.setItems(FXCollections.observableArrayList(controller.AllRoom()));
             sessionDateInDatePicker.setValue(sesiune.getDate_in().toLocalDate());
