@@ -22,9 +22,11 @@ public class ProposalsController extends Observable {
     }
 
     public void add(String nameAuthor, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, String sesiune) {
+
         int id_autor=provider.getIdAuthorByName(nameAuthor);
         int id_sesiune=provider.getIdSesiuneByName(sesiune);
         Proposal proposal=new Proposal(id_autor,other_authors,name,keywords,topics,type,send_date,accept_date,status,abs,document,id_sesiune);
+
         proposals.add(proposal);
         provider.insert(proposal);
         setChanged();

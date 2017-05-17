@@ -59,7 +59,7 @@ public class ProposalsProvider {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "SELECT userId FROM User where firstName=:Fname and lastName=:Lname";
+        String hql = "SELECT id_user FROM User where firstName=:Fname and lastName=:Lname";
         Query query = session.createQuery(hql);
         query.setParameter("Fname", firstName);
         query.setParameter("Lname", lastName);
