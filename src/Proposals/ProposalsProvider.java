@@ -12,19 +12,19 @@ import java.util.List;
 /**
  * Created by MariusDK on 16.05.2017.
  */
+
 public class ProposalsProvider {
 
-    public List selectProposals()
-    {
-        List<Proposal> proposals=new ArrayList<>();
-        SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
-        Session session=sessionFactory.openSession();
+    public List selectProposals() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        proposals=session.createQuery("from Proposal ").getResultList();
+        List<Proposal> proposals = session.createQuery("from Proposal ").getResultList();
         session.getTransaction().commit();
         session.close();
         return proposals;
     }
+
     public void insert(Proposal p)
     {
         SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();

@@ -22,7 +22,7 @@ public class User {
     @Column private String affiliation;
     @Column private String email;
     @Column private String phone;
-    @Column String webPage;
+    @Column private String webPage;
 
     public int getId_user() {
         return id_user;
@@ -55,14 +55,6 @@ public class User {
     public Collection<PCEvent> getPcEvent() {return pcEvent;}
 
     public void setPcEvent(Collection<PCEvent> pcEvent) {this.pcEvent = pcEvent;}
-
-    public Collection<PCProposal> getPCprops() {
-        return pcProps;
-    }
-
-    public void setPCprops(Collection<PCProposal> pcProps) {
-        this.pcProps = pcProps;
-    }
 
     public String getUserName() {
         return userName;
@@ -151,10 +143,9 @@ public class User {
     public void setWebPage(String webPage) {
         this.webPage = webPage;
     }
+
     @Override
     public String toString() {
         return "    " + type + "    " + firstName + "    " + lastName + "    " + country + "    " + affiliation;
     }
-
-
 }
