@@ -35,6 +35,6 @@ public class PendingProposalsUI implements Initializable{
     }
     public void WannaReview()
     {
-        
+
     }
 }
