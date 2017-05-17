@@ -21,7 +21,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">3</property>
+        <property name="connection.pool_size">10</property>
 
         <!-- Names the annotated entity class -->
         <mapping class="domain.User"/>
@@ -31,6 +31,11 @@
         <mapping class="domain.Room"/>
         <mapping class="domain.Presentation"/>
         <mapping class="domain.Sesiune"/>
+        <mapping class="domain.PCProposal"/>
+        <mapping class="domain.PCEvent"/>
+        <mapping class="domain.UserSesiune"/>
+        <mapping class="domain.EventSesiune"/>
+
 
     </session-factory>
 </hibernate-configuration>

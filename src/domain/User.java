@@ -7,9 +7,11 @@ import java.util.Collection;
 @Entity
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int userId;
-    @Column @OneToMany private Collection<Payment> payment = new ArrayList<>();
-    @ManyToMany private Collection<Proposal> proposals = new ArrayList();
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)  private int id_user;
+    @OneToOne private Payment payment;
+    @OneToMany(mappedBy = "user") private Collection<PCEvent> pcEvent = new ArrayList<PCEvent>();
+    @OneToMany(mappedBy = "user") private Collection<PCProposal> pcProps = new ArrayList<PCProposal>();
+    @OneToMany(mappedBy = "user") private Collection<UserSesiune> userSesiune = new ArrayList<UserSesiune>();
     @Column private String userName;
     @Column private String password;
     @Column private String lastName;
@@ -22,25 +24,45 @@ public class User {
     @Column private String phone;
     @Column String webPage;
 
-    public int getUserId() {
-        return userId;
+    public int getId_user() {
+        return id_user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
-    public Collection<Proposal> getProposals() {
-        return proposals;
+    public Payment getPayment() {return payment;}
+
+    public void setPayment(Payment payment) {this.payment = payment;}
+
+    public Collection<PCProposal> getPcProps() {
+        return pcProps;
     }
 
-    public void setProposals(Collection<Proposal> proposals) {
-        this.proposals = proposals;
+    public void setPcProps(Collection<PCProposal> pcProps) {
+        this.pcProps = pcProps;
     }
 
-    public Collection<Payment> getPayment() {return payment;}
+    public Collection<UserSesiune> getUserSesiune() {
+        return userSesiune;
+    }
 
-    void setPayment(Collection<Payment> payment) {this.payment = payment;}
+    public void setUserSesiune(Collection<UserSesiune> userSesiune) {
+        this.userSesiune = userSesiune;
+    }
+
+    public Collection<PCEvent> getPcEvent() {return pcEvent;}
+
+    public void setPcEvent(Collection<PCEvent> pcEvent) {this.pcEvent = pcEvent;}
+
+    public Collection<PCProposal> getPCprops() {
+        return pcProps;
+    }
+
+    public void setPCprops(Collection<PCProposal> pcProps) {
+        this.pcProps = pcProps;
+    }
 
     public String getUserName() {
         return userName;
@@ -129,9 +151,10 @@ public class User {
     public void setWebPage(String webPage) {
         this.webPage = webPage;
     }
-
     @Override
     public String toString() {
         return "    " + type + "    " + firstName + "    " + lastName + "    " + country + "    " + affiliation;
     }
+
+
 }

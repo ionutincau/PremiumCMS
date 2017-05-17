@@ -2,6 +2,8 @@ package domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by ASUS on 04.May.2017.
@@ -10,6 +12,8 @@ import java.sql.Date;
 @Entity
 public class Sesiune {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_session;
+    @OneToMany(mappedBy = "sesiune") private Collection<UserSesiune> userSesiune = new ArrayList<UserSesiune>();
+    @OneToMany(mappedBy = "sesiune") private Collection<EventSesiune> eventSesiune = new ArrayList<EventSesiune>();
     @Column private String name;
     @Column private int id_room;
     @Column private Date date_in;
