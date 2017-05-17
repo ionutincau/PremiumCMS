@@ -30,7 +30,6 @@ public class Proposal {
     public Proposal() {
 
     }
-
     public Proposal(int id_author, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, int id_session) {
         this.id_author = id_author;
         this.other_authors = other_authors;

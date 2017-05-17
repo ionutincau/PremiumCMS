@@ -64,13 +64,13 @@ public class AddProposalUI implements Initializable{
     public void Add() {
         try {
 
-//            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
-//            System.out.println(Name); //todo: check this
+            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
+            System.out.println(Name); //todo: check this
 
             java.sql.Date date= new java.sql.Date(Calendar.getInstance().getTime().getTime());
             if (!popUpErrorSession(proposalSessionChoiceBox.getSelectionModel().getSelectedItem()))
             {
-                controller.add("Maierescu Marius", proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), date, null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
+                controller.add(Name, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), date, null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
                 Stage stage = (Stage) proposalOKButton.getScene().getWindow();
                 stage.close();
             }
@@ -87,7 +87,7 @@ public class AddProposalUI implements Initializable{
             if (!popUpErrorSession(proposalSessionChoiceBox.getSelectionModel().getSelectedItem()))
             {
                 //String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
-                controller.edit(proposal.getId_proposal(), "Maierescu Marius", proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
+                controller.edit(proposal.getId_proposal(), controller.getNameAuthor(proposal.getId_author()), proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
 
                 Stage stage = (Stage) proposalOKButton.getScene().getWindow();
                 stage.close();
