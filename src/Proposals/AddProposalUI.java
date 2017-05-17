@@ -5,10 +5,7 @@ import domain.Proposal;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -66,12 +63,17 @@ public class AddProposalUI implements Initializable{
 
     public void Add() {
         try {
-            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
-            System.out.println(Name); //todo: check this
+
+//            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
+//            System.out.println(Name); //todo: check this
+
             java.sql.Date date= new java.sql.Date(Calendar.getInstance().getTime().getTime());
-            controller.add(Name,proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), date, null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
-            Stage stage = (Stage) proposalOKButton.getScene().getWindow();
-            stage.close();
+            if (!popUpErrorSession(proposalSessionChoiceBox.getSelectionModel().getSelectedItem()))
+            {
+                controller.add("Maierescu Marius", proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), date, null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
+                Stage stage = (Stage) proposalOKButton.getScene().getWindow();
+                stage.close();
+            }
         }
         catch (NumberFormatException e) {
             //UtilFunctions.showInfo("Format invalid!\n"); //todo: check this
@@ -80,14 +82,16 @@ public class AddProposalUI implements Initializable{
             //UtilFunctions.showInfo(e.getMessage());
         }
     }
-
     public void Edit() {
         try {
-            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
-            controller.edit(proposal.getId_proposal(),Name, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
+            if (!popUpErrorSession(proposalSessionChoiceBox.getSelectionModel().getSelectedItem()))
+            {
+                //String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
+                controller.edit(proposal.getId_proposal(), "Maierescu Marius", proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
 
-            Stage stage = (Stage)proposalOKButton.getScene().getWindow();
-            stage.close();
+                Stage stage = (Stage) proposalOKButton.getScene().getWindow();
+                stage.close();
+            }
         }
         catch (NumberFormatException e) {
             //UtilFunctions.showInfo("Format invalid!\n"); //todo: check this
@@ -95,5 +99,20 @@ public class AddProposalUI implements Initializable{
         catch (Exception e) {
             //UtilFunctions.showInfo(e.getMessage());
         }
+    }
+    public boolean popUpErrorSession(String check)
+    {
+        if (check.equals(null))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Sesiune");
+            alert.setHeaderText("Information Alert");
+            String s ="Selectati o sesiune in care sa va prezentati propunerea";
+            alert.setContentText(s);
+            alert.showAndWait();
+
+            return true;
+        }
+        return false;
     }
 }
