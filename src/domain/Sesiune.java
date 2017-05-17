@@ -1,13 +1,12 @@
 package domain;
 
-import Sessions.SesiuneProvider;
-
 import javax.persistence.*;
 import java.sql.Date;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
+
 @Entity
 public class Sesiune {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_session;
@@ -42,12 +41,7 @@ public class Sesiune {
     public void setPresident(String president) {this.president = president;}
 
     @Override
-    public String toString()
-    {
-        return "name='" + name +
-                ", id_room=" + id_room +
-                ", date_in=" + date_in +
-                ", date_out=" + date_out +
-                ", president='" + president;
+    public String toString() {
+        return name + ",     sala: " + id_room + ",     " + date_in + " - " + date_out;
     }
 }

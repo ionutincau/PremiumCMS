@@ -2,13 +2,17 @@ package domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by ASUS on 04.May.2017.
  */
+
 @Entity
 public class Proposal {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_proposal;
+    @ManyToMany private Collection<User> users = new ArrayList();
     @Column private int id_author;
     @Column private String other_authors;
     @Column private String name;
@@ -43,6 +47,14 @@ public class Proposal {
 
     public void setId_proposal(int id_proposal) {
         this.id_proposal = id_proposal;
+    }
+
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
 
     public int getId_author() {

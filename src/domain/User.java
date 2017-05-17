@@ -9,6 +9,7 @@ public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int userId;
     @Column @OneToMany private Collection<Payment> payment = new ArrayList<>();
+    @ManyToMany private Collection<Proposal> proposals = new ArrayList();
     @Column private String userName;
     @Column private String password;
     @Column private String lastName;
@@ -27,6 +28,14 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public Collection<Proposal> getProposals() {
+        return proposals;
+    }
+
+    public void setProposals(Collection<Proposal> proposals) {
+        this.proposals = proposals;
     }
 
     public Collection<Payment> getPayment() {return payment;}

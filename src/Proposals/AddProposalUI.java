@@ -21,63 +21,39 @@ import java.util.ResourceBundle;
 /**
  * Created by Aurelian on 5/11/2017.
  */
-public class AddProposalUIController implements Initializable{
+
+public class AddProposalUI implements Initializable{
     private ProposalsController controller;
     private Proposal proposal;
-    private LoginController loginController;
-    @FXML
-    private ChoiceBox<String> proposalSessionChoiceBox;
-    @FXML
-    private TextField proposalOtherAuthorsNameTextField;
-    @FXML
-    private Button proposalOKButton;
 
-    @FXML
-    private TextField proposalTypeTextField;
+    @FXML private ChoiceBox<String> proposalSessionChoiceBox;
+    @FXML private TextField proposalOtherAuthorsNameTextField;
+    @FXML private Button proposalOKButton;
+    @FXML private TextField proposalTypeTextField;
+    @FXML private Label proposalDocumentPathLabel;
+    @FXML private Label proposalAbstractPathLabel;
+    @FXML private Button proposalDocumentFilePicker;
+    @FXML private TextField proposalKeywordsTextField;
+    @FXML private TextField proposalTopicsTextField;
+    @FXML private TextField proposalNameTextField;
+    @FXML private Button proposalAbstractFilePicker;
 
-    @FXML
-    private Label proposalDocumentPathLabel;
-
-    @FXML
-    private Label proposalAbstractPathLabel;
-
-    @FXML
-    private Button proposalDocumentFilePicker;
-
-    @FXML
-    private TextField proposalKeywordsTextField;
-
-    @FXML
-    private TextField proposalTopicsTextField;
-
-    @FXML
-    private TextField proposalNameTextField;
-
-    @FXML
-    private Button proposalAbstractFilePicker;
-
-
-    public AddProposalUIController()
-    {
+    public AddProposalUI() {
 
     }
 
-    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle)
-    {}
-    public void initData(String name, Proposal proposal, ProposalsController controller)
-    {
-        this.controller=controller;
-        this.proposal=proposal;
+    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle) {}
 
+    public void initData(String name, Proposal proposal, ProposalsController controller) {
+        this.controller = controller;
+        this.proposal = proposal;
 
         proposalSessionChoiceBox.setItems(FXCollections.observableArrayList(controller.SessionName()));
         proposalOKButton.setText(name);
-        if (name=="Adauga")
-        {
+        if (name == "Adauga") {
             proposalOKButton.setOnAction(e->Add());
         }
-        else
-        {
+        else {
             proposalSessionChoiceBox.setValue(controller.getSessionName(proposal.getId_session()));
             proposalOtherAuthorsNameTextField.setText(proposal.getOther_authors());
             proposalTypeTextField.setText(proposal.getType());
@@ -87,35 +63,34 @@ public class AddProposalUIController implements Initializable{
             proposalOKButton.setOnAction(e->Edit());
         }
     }
-    public void Add()
-    {
-        try {
 
-            String Name = loginController.getUser().getLastName() + " " + loginController.getUser().getFirstName();
-            System.out.println(Name);
+    public void Add() {
+        try {
+            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
+            System.out.println(Name); //todo: check this
             java.sql.Date date= new java.sql.Date(Calendar.getInstance().getTime().getTime());
             controller.add(Name,proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), date, null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
             Stage stage = (Stage) proposalOKButton.getScene().getWindow();
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            //UtilFunctions.showInfo("Format invalid!\n"); //todo: check this
         }
         catch (Exception e) {
             //UtilFunctions.showInfo(e.getMessage());
         }
     }
-    public void Edit()
-    {
+
+    public void Edit() {
         try {
-            String Name = loginController.getUser().getLastName() + " " + loginController.getUser().getFirstName();
+            String Name = LoginController.getInstance().getUser().getLastName() + " " + LoginController.getInstance().getUser().getFirstName();
             controller.edit(proposal.getId_proposal(),Name, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), proposalTypeTextField.getText(), proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
 
             Stage stage = (Stage)proposalOKButton.getScene().getWindow();
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            //UtilFunctions.showInfo("Format invalid!\n"); //todo: check this
         }
         catch (Exception e) {
             //UtilFunctions.showInfo(e.getMessage());

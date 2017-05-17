@@ -40,19 +40,12 @@ public class loginUI {
         if (loginController.getUser() != null) {
             closeTab(loginTab);
             addTabs(loginController.getUser().getType());
-            //todo: remove temp for test
-//            try {
-//                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
-//                tabPane.getTabs().add(pending);
-//            }
-//            catch (Exception e) {
-//
-//            }
         }
     }
+
     public void addTabs(String usertype) {
         try {
-            if (usertype.equals("Admin")) {
+            if (usertype.equals("admin")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 Tab sesiuneTab = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
                 Tab evenimentTab = FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
@@ -61,22 +54,23 @@ public class loginUI {
                 tabPane.getTabs().add(sesiuneTab);
                 tabPane.getTabs().add(evenimentTab);
                 tabPane.getTabs().add(propuneriTab);
-
             }
-            if (usertype.equals("pc")) {
+            else if (usertype.equals("pc")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 tabPane.getTabs().add(pending);
             }
-            if (usertype.equals("particitapnti"))
-            {
+            else if (usertype.equals("author")) {
 
             }
+            else if (usertype.equals("participant")) {
 
+            }
         }
         catch (IOException ex) {
             UtilFunctions.showInfo("Application can't manage usertype " + usertype + "\nContact system administrator");
         }
     }
+
     public void createAccount() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../User/create_account.fxml"));
@@ -91,7 +85,6 @@ public class loginUI {
         }
     }
 
-    // todo:
     private void closeTab(Tab tab) {
         EventHandler<Event> handler = tab.getOnClosed();
         if (null != handler) {
