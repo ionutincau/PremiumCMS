@@ -8,11 +8,11 @@ import java.util.Collection;
 /**
  * Created by ASUS on 04.May.2017.
  */
-
 @Entity
 public class Proposal {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_proposal;
-    @ManyToMany private Collection<User> users = new ArrayList();
+    @OneToMany(mappedBy = "proposal") private Collection<PCProposal> pcProps = new ArrayList<PCProposal>();
+    @OneToMany private Collection<User> users = new ArrayList<User>();
     @Column private int id_author;
     @Column private String other_authors;
     @Column private String name;
@@ -26,21 +26,6 @@ public class Proposal {
     @Column private String document;
     @Column private int id_session;
 
-    public Proposal(int id_author, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, int id_session) {
-        this.id_author = id_author;
-        this.other_authors = other_authors;
-        this.name = name;
-        this.keywords = keywords;
-        this.topics = topics;
-        this.type = type;
-        this.send_date = send_date;
-        this.accept_date = accept_date;
-        this.status = status;
-        this.abs = abs;
-        this.document = document;
-        this.id_session = id_session;
-    }
-
     public int getId_proposal() {
         return id_proposal;
     }
@@ -49,13 +34,9 @@ public class Proposal {
         this.id_proposal = id_proposal;
     }
 
-    public Collection<User> getUsers() {
-        return users;
-    }
+    public Collection<PCProposal> getPCProps() {return pcProps;}
 
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
+    public void setPCProps(Collection<PCProposal> pcProps) {this.pcProps = pcProps;}
 
     public int getId_author() {
         return id_author;

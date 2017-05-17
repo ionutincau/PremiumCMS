@@ -12,7 +12,8 @@ import java.util.Collection;
 public class Event {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_event;
-    //@ManyToMany(mappedBy = "event") private Collection<User> user= new ArrayList<User>();
+    @OneToMany(mappedBy = "event") private Collection<PCEvent> pcEvent = new ArrayList<PCEvent>();
+    @OneToMany(mappedBy = "event") private Collection<EventSesiune> eventSesiune = new ArrayList<EventSesiune>();
     @Column private String name;
     @Column private Date start;
     @Column private Date end;
