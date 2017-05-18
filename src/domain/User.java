@@ -24,6 +24,9 @@ public class User {
     @Column private String phone;
     @Column private String webPage;
 
+    public User(){}
+
+
     public int getId_user() {
         return id_user;
     }
