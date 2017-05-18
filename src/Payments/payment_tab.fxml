@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Tab text="Payment" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Payments.PaymentTabUIController">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" >
+            <children>
+                <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label minWidth="120.0" text="Ammount:" />
+                                <Label id="paymentAmmount" fx:id="paymentAmmount" text="47.95">
+                                    <padding>
+                                        <Insets left="40.0" />
+                                    </padding>
+                                </Label>
+                                <Label id="paymentCurrency" fx:id="paymentCurrency" text="\$">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                            <children>
+                                <Label minWidth="120.0" text="Due date:" />
+                                <Label id="paymentDueDate" fx:id="paymentDueDate" text="12.07.2017" />
+                            </children>
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                            <children>
+                                <Label minWidth="120.0" text="Card number:" />
+                                <TextField id="paymentCardNumber" fx:id="paymentCardNumber" />
+                            </children>
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                            <children>
+                                <Label minWidth="120.0" text="Expiration date:" />
+                                <TextField id="paymentCardNumberExpirationDate" fx:id="paymentCardNumberExpirationDate" promptText="mm/yyyy" />
+                            </children>
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                            <children>
+                                <Label minWidth="120.0" text="CVV:" />
+                                <TextField id="paymentCardCVV" fx:id="paymentCardCVV" />
+                            </children>
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefWidth="45.0" spacing="40.0" VBox.vgrow="NEVER">
+                            <children>
+                                <Button id="paymentPayButton" fx:id="paymentPayButton" mnemonicParsing="false" prefWidth="100.0" text="Pay with card" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </content>
+</Tab>
