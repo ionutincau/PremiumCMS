@@ -22,9 +22,11 @@ public class ProposalsController extends Observable {
     }
 
     public void add(String nameAuthor, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, String sesiune) {
+
         int id_autor=provider.getIdAuthorByName(nameAuthor);
         int id_sesiune=provider.getIdSesiuneByName(sesiune);
         Proposal proposal=new Proposal(id_autor,other_authors,name,keywords,topics,type,send_date,accept_date,status,abs,document,id_sesiune);
+
         proposals.add(proposal);
         provider.insert(proposal);
         setChanged();
@@ -68,10 +70,14 @@ public class ProposalsController extends Observable {
         return provider.getSessionName(id_session);
     }
 
-    public void splitProposals(int nrReviewers) {
+    public void splitProposals(int nrReviewers)
+    {
         List<Proposal> proposalList = new ArrayList(); // list with all proposals // todo: load this
+        proposalList=provider.selectProposals();
         List<User> pcList = new ArrayList(); // list with all pc members // todo: load this
+        pcList=provider.getPC();
         int usedProposals[] = new int[proposalList.size()]; // list with all proposals already splitted
+
         List<PCProposal> splittedProposals = new ArrayList(); // list with all proposals to review by each pc
 
         while (!proposalList.isEmpty()) { // give one proposal to each pc
@@ -118,10 +124,11 @@ public class ProposalsController extends Observable {
         for (Proposal proposal : proposalList) {
             proposal.setPCProps(getProposalUsers(splittedProposals, proposal)); // set the new proposal list for proposal
         }
-
+        provider.updatePCProposalTable(splittedProposals);
+        provider.updateUserTableOnlyPC(pcList);
+        provider.updateProposalTableOnlyPC(proposalList);
         // todo: update users in database
     }
-
     /**
      * check splittedProposals if it has a PCProposal with user and proposal
      * @param splittedProposals
@@ -188,5 +195,9 @@ public class ProposalsController extends Observable {
         for (Proposal p : l) {
             System.out.println("***" + p.getName());
         }*/
+    }
+    public String getNameAuthor(int id)
+    {
+        return provider.getAuthorName(id);
     }
 }

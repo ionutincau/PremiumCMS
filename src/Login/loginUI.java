@@ -27,19 +27,19 @@ public class loginUI {
     private LoginController loginController;
 
     public loginUI() {
-        loginController = new LoginController();
+        LoginController.getInstance();
     }
 
     public void Login() {
         try {
-            loginController.login(usernameField.getText(), passwordField.getText());
+            LoginController.getInstance().login(usernameField.getText(), passwordField.getText());
         }
         catch (Exception e) {
             UtilFunctions.showInfo(e.getMessage());
         }
-        if (loginController.getUser() != null) {
+        if (LoginController.getInstance().getUser() != null) {
             closeTab(loginTab);
-            addTabs(loginController.getUser().getType());
+            addTabs(LoginController.getInstance().getUser().getType());
         }
     }
 

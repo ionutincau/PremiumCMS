@@ -1,6 +1,8 @@
 package Proposals;
 
+import domain.PCProposal;
 import domain.Proposal;
+import domain.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -59,7 +61,7 @@ public class ProposalsProvider {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "SELECT userId FROM User where firstName=:Fname and lastName=:Lname";
+        String hql = "SELECT id_user FROM User where firstName=:Fname and lastName=:Lname";
         Query query = session.createQuery(hql);
         query.setParameter("Fname", firstName);
         query.setParameter("Lname", lastName);
@@ -92,6 +94,7 @@ public class ProposalsProvider {
         session.close();
         return sesiunesName;
     }
+
     public String getSessionName(int id_session)
     {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -105,7 +108,75 @@ public class ProposalsProvider {
         session.close();
         return name;
     }
+    public List getPC()
+    {
 
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        String hql = "FROM User where type='pc'";
+        Query query = session.createQuery(hql);
+        List results = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return results;
+    }
+    public String getAuthorName(int id)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "SELECT concat(lastName, ' ' ,firstName) AS fullname FROM User where id_user=:idAuthor";
+        Query query = session.createQuery(hql);
+        query.setParameter("idAuthor", id);
+        String results = (String) query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return results;
+    }
+    public void updatePCProposalTable(List<PCProposal> pcProposal)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("DELETE FROM PCProposal");
+        query.executeUpdate();
+        for (PCProposal pcP:pcProposal)
+        {
+            session.save(pcP);
+        }
+        session.getTransaction().commit();
+        session.close();
+    }
+    public void updateUserTableOnlyPC(List<User> pcUser)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("DELETE FROM User WHERE type='pc'");
+        query.executeUpdate();
+        for (User user:pcUser)
+        {
+            session.save(user);
+        }
+        session.getTransaction().commit();
+        session.close();
+    }
+    public void updateProposalTableOnlyPC(List<Proposal> proposalsList)
+    {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("DELETE FROM Proposal WHERE type='pc'");
+        query.executeUpdate();
+        for (Proposal p:proposalsList)
+        {
+            session.save(p);
+        }
+        session.getTransaction().commit();
+        session.close();
+    }
 
 
 

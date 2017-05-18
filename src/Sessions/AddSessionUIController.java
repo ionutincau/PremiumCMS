@@ -68,16 +68,20 @@ public class AddSessionUIController implements Initializable{
             sessionPresidentLabel.setVisible(true);
 
             sessionPresidentChoiceBox.setItems(FXCollections.observableArrayList(controller.AllPc()));
-            if (!sesiune.getPresident().equals("")) {
+
+            if (sesiune.getPresident()!=null) {
                 sessionPresidentChoiceBox.setValue(sesiune.getPresident());
             }
-            if (!controller.getRoom(sesiune.getId_room()).equals(""))
-            {
+            if (sesiune.getId_room()!=0) {
                 sessionRoomChoiceBox.setValue(controller.getRoom((sesiune.getId_room())));
             }
             sessionRoomChoiceBox.setItems(FXCollections.observableArrayList(controller.AllRoom()));
-            sessionDateInDatePicker.setValue(sesiune.getDate_in().toLocalDate());
-            sessionDateOutDatePicker.setValue(sesiune.getDate_out().toLocalDate());
+            if (sesiune.getDate_in()!=null) {
+                sessionDateInDatePicker.setValue(sesiune.getDate_in().toLocalDate());
+            }
+            if (sesiune.getDate_out()!=null) {
+                sessionDateOutDatePicker.setValue(sesiune.getDate_out().toLocalDate());
+            }
             sessionNameTextField.setText(sesiune.getName());
             buttonOkId.setOnAction(e->Edit());
         }

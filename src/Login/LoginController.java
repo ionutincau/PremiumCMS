@@ -13,7 +13,7 @@ public class LoginController {
     private LoginProvider loginProvider;
     private User user;
 
-    public LoginController() {
+    private LoginController() {
         loginProvider = new LoginProvider();
     }
 

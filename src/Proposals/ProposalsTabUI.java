@@ -34,11 +34,6 @@ public class ProposalsTabUI implements Initializable,Observer{
         this.controller = new ProposalsController();
         this.controller.addObserver(this);
     }
-
-    public void initialize() {
-
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         proposalsListView.setFixedCellSize(48);
