@@ -8,12 +8,22 @@ import javax.persistence.*;
 
 @Entity
 public class PCProposal {
-    @Id @GeneratedValue private int id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)  private int id;
     @ManyToOne(cascade = CascadeType.ALL) private User user;
     @ManyToOne(cascade = CascadeType.ALL) private Proposal proposal;
     @Column private int bid;
     @Column private int nota;
     @Column private String review;
+
+    public PCProposal() {
+    }
+    public PCProposal(User user, Proposal proposal, int bid, int nota, String review) {
+        this.user = user;
+        this.proposal = proposal;
+        this.bid = bid;
+        this.nota = nota;
+        this.review = review;
+    }
 
     public int getId() {
         return id;

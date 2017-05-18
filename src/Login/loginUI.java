@@ -45,14 +45,16 @@ public class loginUI {
     public void addTabs(String usertype) {
         try {
             if (usertype.equals("admin")) {
-                Tab sesiuneTab = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
-                Tab evenimentTab = FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
-                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
-                Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
-                tabPane.getTabs().add(sesiuneTab);
-                tabPane.getTabs().add(evenimentTab);
-                tabPane.getTabs().add(pending);
-                tabPane.getTabs().add(propuneriTab);
+                Tab sessionTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
+                Tab propuneriPendingTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/pending_proposals.fxml"));
+                Tab evenimentTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
+                Tab pending = (Tab)FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
+                Tab propuneriTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
+                this.tabPane.getTabs().add(sessionTab);
+                this.tabPane.getTabs().add(evenimentTab);
+                this.tabPane.getTabs().add(pending);
+                this.tabPane.getTabs().add(propuneriTab);
+                this.tabPane.getTabs().add(propuneriPendingTab);
             }
             else if (usertype.equals("pc")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));

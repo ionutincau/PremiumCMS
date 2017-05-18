@@ -79,13 +79,11 @@ public class AddProposalUI implements Initializable{
             e.printStackTrace();
         }
     }
-
     public void Edit() {
         try {
             if (proposalSessionChoiceBox.getSelectionModel().getSelectedItem() != null) {
                 User user = LoginController.getInstance().getUser();
                 controller.edit(proposal, user, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), "", proposal.getSend_date(), null, null, null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
-
                 Stage stage = (Stage) proposalOKButton.getScene().getWindow();
                 stage.close();
             }

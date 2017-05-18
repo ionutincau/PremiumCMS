@@ -143,6 +143,7 @@ public class ProposalsController extends Observable {
         return found;
     }
 
+
     /**
      * check if user refused the proposal
      * @param user
@@ -199,4 +200,26 @@ public class ProposalsController extends Observable {
     {
         return provider.getAuthorName(id);
     }
+    public void UpdatePcProposal(User user, Proposal proposal, int bid, int nota, String review)
+    {
+        PCProposal pcProposal=new PCProposal();
+        pcProposal.setUser(user);
+        pcProposal.setProposal(proposal);
+        pcProposal.setBid(bid);
+        pcProposal.setNota(nota);
+        pcProposal.setReview(review);
+        System.out.println(pcProposal.getId());
+        provider.UpdatePCProposal(pcProposal);
+        setChanged();
+        notifyObservers();
+    }
+    public boolean checkIfReview(User user,Proposal proposal)
+    {
+        return provider.checkIfProposalExistReview(proposal,user);
+    }
+    public boolean checkIfPass(User user,Proposal proposal)
+    {
+        return provider.checkIfProposalExistPass(proposal,user);
+    }
+
 }
