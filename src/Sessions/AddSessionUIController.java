@@ -1,5 +1,6 @@
 package Sessions;
 
+import Utils.UtilFunctions;
 import domain.Sesiune;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -94,10 +95,10 @@ public class AddSessionUIController implements Initializable{
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            UtilFunctions.showInfo("Format invalid!\n");
         }
         catch (Exception e) {
-            //UtilFunctions.showInfo(e.getMessage());
+            UtilFunctions.showInfo(e.getMessage());
         }
     }
 
@@ -112,10 +113,10 @@ public class AddSessionUIController implements Initializable{
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            UtilFunctions.showInfo("Format invalid!\n");
         }
         catch (Exception e) {
-            //UtilFunctions.showInfo(e.getMessage());
+            UtilFunctions.showInfo(e.getMessage());
         }
     }
 }

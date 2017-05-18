@@ -22,19 +22,19 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label id="sessionDateInLabel" fx:id="sessionDateInLabel" minWidth="110.0" prefWidth="110.0" text="Date in" />
+                        <Label id="sessionDateInLabel" fx:id="sessionDateInLabel" minWidth="110.0" prefWidth="110.0" text="Start" />
                         <DatePicker id="sessionDateInDatePicker" fx:id="sessionDateInDatePicker" prefWidth="3000.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label id="sessionDateOutLabel" fx:id="sessionDateOutLabel" minWidth="110.0" prefWidth="110.0" text="Date out" />
+                        <Label id="sessionDateOutLabel" fx:id="sessionDateOutLabel" minWidth="110.0" prefWidth="110.0" text="End" />
                         <DatePicker id="sessionDateOutDatePicker" fx:id="sessionDateOutDatePicker" prefWidth="3000.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label id="sessionPresidentLabel" fx:id="sessionPresidentLabel" minWidth="110.0" prefWidth="110.0" text="President" />
+                        <Label id="sessionPresidentLabel" fx:id="sessionPresidentLabel" minWidth="110.0" prefWidth="110.0" text="Session Chair" />
                         <ChoiceBox id="sessionPresidentChoiceBox" fx:id="sessionPresidentChoiceBox" prefWidth="3000.0" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>

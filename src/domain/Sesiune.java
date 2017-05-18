@@ -29,6 +29,7 @@ public class Sesiune {
     }
 
     public Sesiune() {
+
     }
 
     public int getId_session() {return id_session;}

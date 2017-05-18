@@ -1,5 +1,6 @@
 package Events;
 
+import Utils.UtilFunctions;
 import domain.Event;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,54 +36,31 @@ import java.util.ResourceBundle;
 /**
  * Created by Aurelian on 5/10/2017.
  */
+
 public class AddEventUIController implements Initializable{
     private CheckComboBox<String> checkComboBox;
     private EventsController controller;
     private Event event;
-    @FXML
-    private DatePicker abstractDeadlineDatePicker;
 
-    @FXML
-    private DatePicker endDataDatePicker;
+    @FXML private DatePicker abstractDeadlineDatePicker;
+    @FXML private DatePicker endDataDatePicker;
+    @FXML private DatePicker proposalDeadlineDatePicker;
+    @FXML private TextField nameTextField;
+    @FXML private TextArea descriptionTextArea;
+    @FXML private Button okButton;
+    @FXML private DatePicker taxDeadlineDatePicker;
+    @FXML private TextField websiteTextField;
+    @FXML private TextField locationTextField;
+    @FXML private DatePicker evaluationDeadlineDatePicker;
+    @FXML private DatePicker startDateDatePicker;
+    @FXML private HBox sessionsHBox;
 
-    @FXML
-    private DatePicker proposalDeadlineDatePicker;
-
-    @FXML
-    private TextField nameTextField;
-
-    @FXML
-    private TextArea descriptionTextArea;
-
-    @FXML
-    private Button okButton;
-
-    @FXML
-    private DatePicker taxDeadlineDatePicker;
-
-    @FXML
-    private TextField websiteTextField;
-
-    @FXML
-    private TextField locationTextField;
-
-    @FXML
-    private DatePicker evaluationDeadlineDatePicker;
-
-    @FXML
-    private DatePicker startDateDatePicker;
-
-    @FXML
-    private HBox sessionsHBox;
-
-    public AddEventUIController()
-    {
+    public AddEventUIController() {
 
     }
 
     @FXML
-    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle)
-    {
+    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle) {
         // TODO replace example sessionsList below with real sessionsList from DB
         ObservableList<String> sessionsList = FXCollections.observableArrayList();
         sessionsList.add("Horia");
@@ -92,19 +70,16 @@ public class AddEventUIController implements Initializable{
         checkComboBox.setPrefWidth(3000);
 
         sessionsHBox.getChildren().add(checkComboBox);
-
     }
-    public void initData(String name, Event event, EventsController controller)
-    {
+
+    public void initData(String name, Event event, EventsController controller) {
         this.controller=controller;
         this.event=event;
         okButton.setText(name);
-        if (name=="Adauga")
-        {
+        if (name == "Adauga") {
             okButton.setOnAction(e->Add());
         }
-        else
-        {
+        else {
             abstractDeadlineDatePicker.setValue(event.getD_abstract().toLocalDate());
             endDataDatePicker.setValue(event.getEnd().toLocalDate());
             proposalDeadlineDatePicker.setValue(event.getD_proposal().toLocalDate());
@@ -118,10 +93,9 @@ public class AddEventUIController implements Initializable{
             okButton.setOnAction(e->Edit());
         }
     }
-    public void Add()
-    {
-        try {
 
+    public void Add() {
+        try {
             LocalDate localDateOut = endDataDatePicker.getValue();
             Date Enddate = java.sql.Date.valueOf(localDateOut);
             LocalDate localDateIn = startDateDatePicker.getValue();
@@ -139,14 +113,14 @@ public class AddEventUIController implements Initializable{
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            UtilFunctions.showInfo("Format invalid!\n");
         }
         catch (Exception e) {
-            //UtilFunctions.showInfo(e.getMessage());
+            UtilFunctions.showInfo(e.getMessage());
         }
     }
-    public void Edit()
-    {
+
+    public void Edit() {
         try {
             LocalDate localDateOut = endDataDatePicker.getValue();
             Date Enddate = java.sql.Date.valueOf(localDateOut);
@@ -161,16 +135,15 @@ public class AddEventUIController implements Initializable{
             LocalDate  taxDate= taxDeadlineDatePicker.getValue();
             Date  Taxdate= java.sql.Date.valueOf(taxDate);
 
-
             controller.edit(event.getId_event(),nameTextField.getText(),Startdate,Enddate,websiteTextField.getText(),locationTextField.getText(),descriptionTextArea.getText(),AbstractDate,Proposaldate,Evaluationdate,Taxdate);
             Stage stage = (Stage)okButton.getScene().getWindow();
             stage.close();
         }
         catch (NumberFormatException e) {
-            //UtilFunctions.showInfo("Format invalid!\n");
+            UtilFunctions.showInfo("Format invalid!\n");
         }
         catch (Exception e) {
-            //UtilFunctions.showInfo(e.getMessage());
+            UtilFunctions.showInfo(e.getMessage());
         }
     }
 }

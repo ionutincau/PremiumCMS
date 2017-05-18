@@ -8,6 +8,7 @@ import java.util.Collection;
 /**
  * Created by ASUS on 04.May.2017.
  */
+
 @Entity
 public class Event {
 
@@ -25,8 +26,7 @@ public class Event {
     @Column private Date d_evaluation;
     @Column private Date d_taxes;
 
-    public Event(String name, Date start, Date end, String web_page, String location, String description, Date d_abstract, Date d_proposal, Date d_evaluation, Date d_taxes)
-    {
+    public Event(String name, Date start, Date end, String web_page, String location, String description, Date d_abstract, Date d_proposal, Date d_evaluation, Date d_taxes) {
         this.name = name;
         this.start = start;
         this.end = end;
@@ -40,6 +40,7 @@ public class Event {
     }
 
     public Event() {
+
     }
 
     public int getId_event() {return id_event;}
@@ -67,5 +68,8 @@ public class Event {
     public void setD_evaluation(Date d_evaluation) {this.d_evaluation = d_evaluation;}
     public void setD_taxes(Date d_taxes) {this.d_taxes = d_taxes;}
 
-
+    @Override
+    public String toString() {
+        return "    " + start + "  -  " + end + "    " + name + "    " + location;
+    }
 }

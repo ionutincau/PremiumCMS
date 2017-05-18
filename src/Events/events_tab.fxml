@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <Tab text="Events" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Events.EventsTabUIController">
@@ -10,12 +9,12 @@
             <children>
                 <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <ListView id="eventsListView" fx:id="eventsListView" prefHeight="611.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
-                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1000.0" spacing="40.0" VBox.vgrow="NEVER">
+                        <ListView id="eventsListView" fx:id="eventsListView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" maxHeight="45.0" minWidth="45.0" prefHeight="45.0" prefWidth="200.0" spacing="40.0" VBox.vgrow="NEVER">
                             <children>
-                                <Button id="addEventButton" fx:id="addEventButton" mnemonicParsing="false" text="Add" />
-                                <Button id="editEventButton" fx:id="editEventButton" mnemonicParsing="false" text="Edit" />
-                                <Button id="deleteEventButton" fx:id="deleteEventButton" mnemonicParsing="false" text="Delete" />
+                                <Button id="addEventButton" fx:id="addEventButton" mnemonicParsing="false" prefWidth="60.0" text="Add" />
+                                <Button id="editEventButton" fx:id="editEventButton" mnemonicParsing="false" prefWidth="60.0" text="Edit" />
+                                <Button id="deleteEventButton" fx:id="deleteEventButton" mnemonicParsing="false" prefWidth="60.0" text="Delete" />
                             </children>
                         </HBox>
                     </children>

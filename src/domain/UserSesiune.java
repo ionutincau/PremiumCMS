@@ -5,6 +5,7 @@ import javax.persistence.*;
 /**
  * Created by ASUS on 17.May.2017.
  */
+
 @Entity
 public class UserSesiune {
     @Id @GeneratedValue private int id;

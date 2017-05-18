@@ -1,6 +1,5 @@
 package Sessions;
 
-import Login.LoginController;
 import domain.Sesiune;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-//import Utils.UtilFunctions;
-import org.omg.CORBA.NO_RESOURCES;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Aurelian on 5/11/2017.
  */
+
 public class SessionsTabUIController implements Initializable,Observer{
 
     private SesiuneController controller;

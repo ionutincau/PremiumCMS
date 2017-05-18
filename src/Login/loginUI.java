@@ -24,10 +24,9 @@ public class loginUI {
     @FXML private TabPane tabPane;
     @FXML private Tab loginTab;
 
-    private LoginController loginController;
 
     public loginUI() {
-        LoginController.getInstance();
+
     }
 
     public void Login() {
@@ -46,13 +45,13 @@ public class loginUI {
     public void addTabs(String usertype) {
         try {
             if (usertype.equals("admin")) {
-                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 Tab sesiuneTab = FXMLLoader.load(this.getClass().getResource("../Sessions/sessions_tab.fxml"));
                 Tab evenimentTab = FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
+                Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
-                tabPane.getTabs().add(pending);
                 tabPane.getTabs().add(sesiuneTab);
                 tabPane.getTabs().add(evenimentTab);
+                tabPane.getTabs().add(pending);
                 tabPane.getTabs().add(propuneriTab);
             }
             else if (usertype.equals("pc")) {

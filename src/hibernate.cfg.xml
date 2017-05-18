@@ -36,6 +36,5 @@
         <mapping class="domain.UserSesiune"/>
         <mapping class="domain.EventSesiune"/>
 
-
     </session-factory>
 </hibernate-configuration>
