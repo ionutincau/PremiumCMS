@@ -31,7 +31,7 @@ public class SesiuneController extends Observable{
         setChanged();
         notifyObservers();
     }
-    public void edit(int id_Sesiune,Date date_in, Date date_out, String name_room, String name, String president)
+    public void edit(int id_Sesiune, Date date_in, Date date_out, String name_room, String name, String president)
     {
         int id_room=provider.getIdRoomFromName(name_room);
         Sesiune sesiune=new Sesiune(name,id_room,date_in,date_out,president);
