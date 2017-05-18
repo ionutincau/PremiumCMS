@@ -79,11 +79,10 @@ public class EventsTabUIController implements Initializable,Observer{
         deleteEventButton.setOnAction(e->{
             eventsListView.getSelectionModel().getSelectedIndex();
             Event event=(Event) eventsListView.getSelectionModel().getSelectedItem();
-            if (event!=null)
-            {
+            if (event != null) {
                 controller.delete(event);
             }
-            else UtilFunctions.showInfo("Selectati o sesiune");
+            else UtilFunctions.showInfo("Selectati un eveniment");
         });
     }
 

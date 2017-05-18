@@ -1,5 +1,6 @@
 package Sessions;
 
+import Utils.UtilFunctions;
 import domain.Sesiune;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,38 +25,27 @@ import java.util.ResourceBundle;
 public class SessionsTabUIController implements Initializable,Observer{
 
     private SesiuneController controller;
-    @FXML
-    private Button addSessionButton;
 
-    @FXML
-    private ListView<?> sessionsListView;
+    @FXML private Button addSessionButton;
+    @FXML private ListView<?> sessionsListView;
+    @FXML private Button deleteSessionButton;
+    @FXML private Button editSessionButton;
 
-    @FXML
-    private Button deleteSessionButton;
-
-    @FXML
-    private Button editSessionButton;
-
-
-    public SessionsTabUIController()
-    {
+    public SessionsTabUIController() {
         this.controller=new SesiuneController();
         this.controller.addObserver(this);
-        //LoginController.getInstance().addObserver(this);
     }
-    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBucccndle)
-    {
 
+    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBucccndle) {
         sessionsListView.setFixedCellSize(48);
         sessionsListView.getItems().addAll(0,(ArrayList)controller.getSesiune());
         SesiuneADD();
         SesiuneEdit();
         SesiuneDelete();
-
     }
-    private void loadWindow(String name, Sesiune sesiune)
-    {
-        try{
+
+    private void loadWindow(String name, Sesiune sesiune) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_session.fxml"));
             AnchorPane root = loader.load();
             AddSessionUIController editController = loader.<AddSessionUIController>getController();
@@ -65,8 +55,7 @@ public class SessionsTabUIController implements Initializable,Observer{
             stage.setScene(new Scene(root, 300, 250));
             stage.show();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -75,27 +64,25 @@ public class SessionsTabUIController implements Initializable,Observer{
         addSessionButton.setOnAction(event -> loadWindow("Adauga",null));
     }
 
-    public void SesiuneEdit()
-    {
+    public void SesiuneEdit() {
         editSessionButton.setOnAction(event -> {
             sessionsListView.getSelectionModel().getSelectedIndex();
             Sesiune sesiune = (Sesiune) sessionsListView.getSelectionModel().getSelectedItem();
             if (sesiune != null) {
                 loadWindow("Editare", sesiune);
             }
-            //else UtilFunctions.showInfo("Selectati o sesiune");
+            else UtilFunctions.showInfo("Selectati o sesiune");
         });
     }
-    public void SesiuneDelete()
-    {
+
+    public void SesiuneDelete() {
         deleteSessionButton.setOnAction(e->{
             sessionsListView.getSelectionModel().getSelectedIndex();
-            Sesiune sesiune=(Sesiune) sessionsListView.getSelectionModel().getSelectedItem();
-            if (sesiune!=null)
-            {
+            Sesiune sesiune = (Sesiune) sessionsListView.getSelectionModel().getSelectedItem();
+            if (sesiune!=null) {
                 controller.delete(sesiune);
             }
-            //else UtilFunctions.showInfo("Selectati o sesiune");
+            else UtilFunctions.showInfo("Selectati o sesiune");
         });
     }
 
@@ -104,5 +91,4 @@ public class SessionsTabUIController implements Initializable,Observer{
         sessionsListView.getItems().clear();
         sessionsListView.getItems().addAll(0,(ArrayList)controller.getSesiune());
     }
-
 }

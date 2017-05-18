@@ -1,5 +1,6 @@
 package User;
 
+import Utils.UtilFunctions;
 import database.DatabaseConnection;
 import domain.User;
 import javafx.fxml.FXML;
@@ -41,9 +42,12 @@ public class PendingTabUI {
         session.beginTransaction();
 
         User user = (User) pendingUsersListView.getSelectionModel().getSelectedItem();
-        pendingUsersListView.getItems().remove(user);
-        user.setStatus("approved");
-        session.update(user);
+        if (user != null) {
+            pendingUsersListView.getItems().remove(user);
+            user.setStatus("approved");
+            session.update(user);
+        }
+        else UtilFunctions.showInfo("Please select a user from the list");
 
         session.getTransaction().commit();
         session.close();
