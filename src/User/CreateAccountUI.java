@@ -60,7 +60,7 @@ public class CreateAccountUI {
         user.setWebPage(websiteTextField.getText());
         user.setStatus("pending");
 
-        if (user.getUserName().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty()) {
+        if (user.getUserName().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty() || user.getFirstName().isEmpty() || user.getLastName().isEmpty()) {
             UtilFunctions.showInfo("Please fill required fields!");
         }
         else {

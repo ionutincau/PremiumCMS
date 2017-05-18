@@ -59,7 +59,8 @@ public class loginUI {
                 tabPane.getTabs().add(pending);
             }
             else if (usertype.equals("author")) {
-
+                Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
+                tabPane.getTabs().add(propuneriTab);
             }
             else if (usertype.equals("participant")) {
 

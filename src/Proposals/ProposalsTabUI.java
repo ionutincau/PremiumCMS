@@ -1,5 +1,6 @@
 package Proposals;
 
+import Utils.UtilFunctions;
 import domain.Proposal;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,7 @@ public class ProposalsTabUI implements Initializable,Observer{
         this.controller = new ProposalsController();
         this.controller.addObserver(this);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         proposalsListView.setFixedCellSize(48);
@@ -51,7 +53,7 @@ public class ProposalsTabUI implements Initializable,Observer{
             editController.initData(name,proposal,controller);
             Stage stage = new Stage();
             stage.setTitle(name);
-            stage.setScene(new Scene(root, 300, 250));
+            stage.setScene(new Scene(root, 800, 400));
             stage.show();
         }
         catch (IOException e) {
@@ -61,7 +63,7 @@ public class ProposalsTabUI implements Initializable,Observer{
 
     public void ProposalADD()
     {
-        proposalAddButton.setOnAction(event -> loadWindow("Adauga",null));
+        proposalAddButton.setOnAction(event -> loadWindow("Add",null));
     }
 
     public void ProposalEdit() {
@@ -69,9 +71,9 @@ public class ProposalsTabUI implements Initializable,Observer{
             proposalsListView.getSelectionModel().getSelectedIndex();
             Proposal proposal = (Proposal) proposalsListView.getSelectionModel().getSelectedItem();
             if (proposal != null) {
-                loadWindow("Editare", proposal);
+                loadWindow("Edit", proposal);
             }
-            //else UtilFunctions.showInfo("Selectati o propunere"); // todo: check this
+            else UtilFunctions.showInfo("Selectati o propunere");
         });
     }
 
@@ -82,7 +84,7 @@ public class ProposalsTabUI implements Initializable,Observer{
             if (proposal!=null) {
                 controller.delete(proposal);
             }
-            //else UtilFunctions.showInfo("Selectati o sesiune"); // todo: check this
+            else UtilFunctions.showInfo("Selectati o propunere");
         });
     }
 

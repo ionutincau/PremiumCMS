@@ -14,15 +14,10 @@ import org.hibernate.Session;
 public class Main extends Application {
 
     public static void main(String[] args) {
-
-
-
-
         Session session = DatabaseConnection.getInstance().openSession();
         session.beginTransaction();
         session.getTransaction().commit();
         session.close();
-
 
         launch();
     }

@@ -27,8 +27,7 @@ public class ProposalsProvider {
         return proposals;
     }
 
-    public void insert(Proposal p)
-    {
+    public void insert(Proposal p) {
         SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
         Session session=sessionFactory.openSession();
         session.beginTransaction();
@@ -36,15 +35,16 @@ public class ProposalsProvider {
         session.getTransaction().commit();
         session.close();
     }
-    public void update(Proposal p)
-    {
-        SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
-        Session session=sessionFactory.openSession();
+
+    public void update(Proposal p) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(p);
         session.getTransaction().commit();
         session.close();
     }
+
     public void delete(Proposal p) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
@@ -53,8 +53,8 @@ public class ProposalsProvider {
         session.getTransaction().commit();
         session.close();
     }
-    public int getIdAuthorByName(String AuthorName)
-    {
+
+    public int getIdAuthorByName(String AuthorName) {
         String[] listName=AuthorName.split(" ", 2);
         String lastName=listName[0];
         String firstName=listName[1];
@@ -70,8 +70,8 @@ public class ProposalsProvider {
         session.close();
         return id_author;
     }
-    public int getIdSesiuneByName(String sesiune)
-    {
+
+    public int getIdSesiuneByName(String sesiune) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -83,20 +83,18 @@ public class ProposalsProvider {
         session.close();
         return id_sesiune;
     }
-    public List getAllNameeSessions()
-    {
-        List<String> sesiunesName=new ArrayList<>();
-        SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
-        Session session=sessionFactory.openSession();
+
+    public List getAllNameeSessions() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        sesiunesName=session.createQuery("select name from Sesiune ").getResultList();
+        List<String> sesiunesName = session.createQuery("select name from Sesiune ").getResultList();
         session.getTransaction().commit();
         session.close();
         return sesiunesName;
     }
 
-    public String getSessionName(int id_session)
-    {
+    public String getSessionName(int id_session) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -108,9 +106,8 @@ public class ProposalsProvider {
         session.close();
         return name;
     }
-    public List getPC()
-    {
 
+    public List getPC() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -122,8 +119,8 @@ public class ProposalsProvider {
         session.close();
         return results;
     }
-    public String getAuthorName(int id)
-    {
+
+    public String getAuthorName(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -135,49 +132,43 @@ public class ProposalsProvider {
         session.close();
         return results;
     }
-    public void updatePCProposalTable(List<PCProposal> pcProposal)
-    {
+
+    public void updatePCProposalTable(List<PCProposal> pcProposal) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("DELETE FROM PCProposal");
         query.executeUpdate();
-        for (PCProposal pcP:pcProposal)
-        {
+        for (PCProposal pcP:pcProposal) {
             session.save(pcP);
         }
         session.getTransaction().commit();
         session.close();
     }
-    public void updateUserTableOnlyPC(List<User> pcUser)
-    {
+
+    public void updateUserTableOnlyPC(List<User> pcUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("DELETE FROM User WHERE type='pc'");
         query.executeUpdate();
-        for (User user:pcUser)
-        {
+        for (User user:pcUser) {
             session.save(user);
         }
         session.getTransaction().commit();
         session.close();
     }
-    public void updateProposalTableOnlyPC(List<Proposal> proposalsList)
-    {
+
+    public void updateProposalTableOnlyPC(List<Proposal> proposalsList) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("DELETE FROM Proposal WHERE type='pc'");
         query.executeUpdate();
-        for (Proposal p:proposalsList)
-        {
+        for (Proposal p:proposalsList) {
             session.save(p);
         }
         session.getTransaction().commit();
         session.close();
     }
-
-
-
 }
