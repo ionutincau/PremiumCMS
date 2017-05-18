@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proposals.EvaluateProposalUIController">
+    <children>
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Name" />
+                        <Label id="proposalNameLabel" fx:id="proposalNameLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Keywords" />
+                        <Label id="proposalKeywordsLabel" fx:id="proposalKeywordsLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Topics" />
+                        <Label id="proposalTopicsLabel" fx:id="proposalTopicsLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Type" />
+                        <Label id="proposalTypeLabel" fx:id="proposalTypeLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Session" />
+                        <Label id="proposalSessionLabel" fx:id="proposalSessionLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label minWidth="100.0" text="Abstract" />
+                        <Label id="proposalAbstractFileLabel" fx:id="proposalAbstractFileLabel" text="Scientific abstract.doc">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <Hyperlink id="proposalAbstractSeeFileLink" fx:id="proposalAbstractSeeFileLink" text="See file">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Hyperlink>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="347.0" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label minWidth="100.0" text="Document" />
+                        <Label id="proposalDocumentFileLabel" fx:id="proposalDocumentFileLabel" text="Scientific document about potato.doc">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <Hyperlink id="proposalDocumentSeeFileLink" fx:id="proposalDocumentSeeFileLink" text="See file">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Hyperlink>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefHeight="50.0" spacing="20.0">
+                    <children>
+                        <Button id="proposalStrongAcceptButton" fx:id="proposalStrongAcceptButton" minWidth="50.0" mnemonicParsing="false" text="STRONG ACCEPT" HBox.hgrow="NEVER" />
+                        <Button id="proposalAcceptButton" fx:id="proposalAcceptButton" layoutX="220.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="ACCEPT" />
+                        <Button id="proposalWeakAcceptButton" fx:id="proposalWeakAcceptButton" layoutX="245.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="WEAK ACCEPT" />
+                        <Button id="proposalBorderlineButton" fx:id="proposalBorderlineButton" layoutX="270.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="BORDERLINE" />
+                        <Button id="proposalWeakRejectButton" fx:id="proposalWeakRejectButton" layoutX="195.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="WEAK REJECT" />
+                        <Button id="proposalRejectButton" fx:id="proposalRejectButton" layoutX="430.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="REJECT" />
+                        <Button id="proposalStrongRejectButton" fx:id="proposalStrongRejectButton" layoutX="430.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="STRONG REJECT" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="20.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

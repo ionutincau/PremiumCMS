@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="120.0" text="Date:" />
+                        <Label id="eventDateLabel" fx:id="eventDateLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="660.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="120.0" text="Time:" />
+                        <Label id="eventTimeLabel" fx:id="eventTimeLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="660.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="120.0" text="Room:" />
+                        <Label id="eventRoomLabel" fx:id="eventRoomLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="660.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="120.0" text="Session:" />
+                        <Label id="eventSessionLabel" fx:id="eventSessionLabel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="660.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="120.0" text="Speaker:" />
+                        <Label id="eventSpeakerLabel" fx:id="eventSpeakerLabel" text="Label" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="635.0" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label minWidth="120.0" text="Summary:" />
+                        <Hyperlink id="eventSummaryFileLink" fx:id="eventSummaryFileLink" text="Hyperlink" />
+                    </children>
+                </HBox>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets left="40.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
