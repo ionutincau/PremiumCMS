@@ -44,7 +44,6 @@ public class ProposalsTabUI implements Initializable,Observer{
         ProposalEdit();
         ProposalDelete();
     }
-
     private void loadWindow(String name, Proposal proposal) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_proposal.fxml"));

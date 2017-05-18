@@ -171,4 +171,70 @@ public class ProposalsProvider {
         session.getTransaction().commit();
         session.close();
     }
+    public void UpdatePCProposal(PCProposal pcProposal) {
+        PCProposal result=null;
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from PCProposal where user=:user1 and proposal=:proposal1");
+        query.setParameter("user1", pcProposal.getUser());
+        query.setParameter("proposal1", pcProposal.getProposal());
+        try {
+            result = (PCProposal) query.getSingleResult();
+            pcProposal.setId(result.getId());
+        }
+        catch (Exception e)
+        {}
+        System.out.println(result+"---------------------------------------------------");
+        if (result==null)
+        {
+            session.save(pcProposal);
+        }
+        else {
+            //PCProposal pcProposal1=(PCProposal) session.merge(pcProposal);
+            session.clear();
+            session.update(pcProposal);
+        }
+        session.getTransaction().commit();
+        session.close();
+    }
+    public boolean checkIfProposalExistReview(Proposal proposal1, User user1) {
+        PCProposal PCresults = null;
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from PCProposal where user=:user1 and proposal=:proposal1 and bid=1");
+        query.setParameter("user1", user1);
+        query.setParameter("proposal1", proposal1);
+
+        try {
+            PCresults = (PCProposal)query.getSingleResult();
+        } catch (Exception var8) {
+            ;
+        }
+
+        session.getTransaction().commit();
+        session.close();
+        return PCresults != null;
+    }
+
+    public boolean checkIfProposalExistPass(Proposal proposal1, User user1) {
+        PCProposal PCresults = null;
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from PCProposal where user=:user1 and proposal=:proposal1 and bid=0");
+        query.setParameter("user1", user1);
+        query.setParameter("proposal1", proposal1);
+
+        try {
+            PCresults = (PCProposal)query.getSingleResult();
+        } catch (Exception var8) {
+            ;
+        }
+
+        session.getTransaction().commit();
+        session.close();
+        return PCresults != null;
+    }
 }
