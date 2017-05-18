@@ -9,6 +9,7 @@ import java.sql.Date;
 
 @Entity
 public class Payment {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_payment;
     @Column private Date date;
 

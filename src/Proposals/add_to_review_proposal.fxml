@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proposals.AddToReviewProposalUI">
@@ -25,12 +24,6 @@
                     <children>
                         <Label minWidth="100.0" text="Topics" />
                         <Label id="proposalTopicsLabel" fx:id="proposalTopicsLabel" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Label minWidth="100.0" text="Type" />
-                        <Label id="proposalTypeLabel" fx:id="proposalTypeLabel" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

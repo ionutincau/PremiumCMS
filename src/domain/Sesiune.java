@@ -11,6 +11,7 @@ import java.util.Collection;
 
 @Entity
 public class Sesiune {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_session;
     @OneToMany(mappedBy = "sesiune") private Collection<UserSesiune> userSesiune = new ArrayList<UserSesiune>();
     @OneToMany(mappedBy = "sesiune") private Collection<EventSesiune> eventSesiune = new ArrayList<EventSesiune>();

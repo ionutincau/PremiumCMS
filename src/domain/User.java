@@ -10,7 +10,7 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)  private int id_user;
     @OneToOne private Payment payment;
     @OneToMany(mappedBy = "user") private Collection<PCEvent> pcEvent = new ArrayList<PCEvent>();
-    @OneToMany(mappedBy = "user") private Collection<PCProposal> pcProps = new ArrayList<PCProposal>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user") private Collection<PCProposal> pcProps = new ArrayList<PCProposal>();
     @OneToMany(mappedBy = "user") private Collection<UserSesiune> userSesiune = new ArrayList<UserSesiune>();
     @Column private String userName;
     @Column private String password;

@@ -27,6 +27,18 @@ public class ProposalsProvider {
         return proposals;
     }
 
+    public List getUserProposals(int id_user) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Proposal where id_author=:idAuthor");
+        query.setParameter("idAuthor", id_user);
+        List<Proposal> proposals = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return proposals;
+    }
+
     public void insert(Proposal p) {
         SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
         Session session=sessionFactory.openSession();
@@ -139,11 +151,19 @@ public class ProposalsProvider {
         session.beginTransaction();
         Query query = session.createQuery("DELETE FROM PCProposal");
         query.executeUpdate();
-        for (PCProposal pcP:pcProposal) {
-            session.save(pcP);
-        }
         session.getTransaction().commit();
         session.close();
+
+        int i = 0;
+        for (PCProposal pcP : pcProposal) {
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            pcP.setId(i++);
+            session.save(pcP);
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     public void updateUserTableOnlyPC(List<User> pcUser) {

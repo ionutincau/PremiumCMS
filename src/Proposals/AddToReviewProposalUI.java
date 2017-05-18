@@ -1,9 +1,7 @@
 package Proposals;
 
 import Login.LoginController;
-import domain.PCProposal;
 import domain.Proposal;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,56 +15,36 @@ import java.util.ResourceBundle;
 /**
  * Created by Aurelian on 5/17/2017.
  */
+
 public class AddToReviewProposalUI implements Initializable{
 
     private ProposalsController controller;
     private Proposal proposal;
-    @FXML
-    private Hyperlink proposalDocumentSeeFile;
 
-    @FXML
-    private Label proposalTopicsLabel;
+    @FXML private Hyperlink proposalDocumentSeeFile;
+    @FXML private Label proposalTopicsLabel;
+    @FXML private Hyperlink proposalAbstractSeeFile;
+    @FXML private Label proposalKeywordsLabel;
+    @FXML private Button proposalPassbutton;
+    @FXML private Label proposalDocumentFilename;
+    @FXML private Button proposalReviewButton;
+    @FXML private Label proposalNameLabel;
+    @FXML private Label proposalAbstractFilename;
+    @FXML private Label proposalSessionLabel;
 
-    @FXML
-    private Hyperlink proposalAbstractSeeFile;
-
-    @FXML
-    private Label proposalKeywordsLabel;
-
-    @FXML
-    private Button proposalPassbutton;
-
-    @FXML
-    private Label proposalTypeLabel;
-
-    @FXML
-    private Label proposalDocumentFilename;
-
-    @FXML
-    private Button proposalReviewButton;
-
-    @FXML
-    private Label proposalNameLabel;
-
-    @FXML
-    private Label proposalAbstractFilename;
-
-    @FXML
-    private Label proposalSessionLabel;
-
-    public AddToReviewProposalUI()
-    {
-    }
-    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle)
-    {
+    public AddToReviewProposalUI() {
 
     }
+
+    public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle) {
+
+    }
+
     public void initData(String name, Proposal proposal, ProposalsController controller) {
         this.controller = controller;
         this.proposal = proposal;
         proposalTopicsLabel.setText(proposal.getTopics());
         proposalKeywordsLabel.setText(proposal.getKeywords());
-        proposalTypeLabel.setText(proposal.getType());
         proposalDocumentFilename.setText(proposal.getDocument());
         proposalAbstractFilename.setText(proposal.getAbs());
         proposalNameLabel.setText(proposal.getName());
@@ -74,14 +52,14 @@ public class AddToReviewProposalUI implements Initializable{
         proposalReviewButton.setOnAction(e->Review());
         proposalPassbutton.setOnAction(e->Pass());
     }
-    public void Review()
-    {
+
+    public void Review() {
         controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,1,0,null);
         Stage stage = (Stage) proposalReviewButton.getScene().getWindow();
         stage.close();
     }
-    public void Pass()
-    {
+
+    public void Pass() {
         controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,0,0,null);
         Stage stage = (Stage) proposalPassbutton.getScene().getWindow();
         stage.close();

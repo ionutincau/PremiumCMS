@@ -5,8 +5,10 @@ import javax.persistence.*;
 /**
  * Created by ASUS on 04.May.2017.
  */
+
 @Entity
 public class Presentation {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_presentation;
     @OneToOne private User speaker;
     @Column private String demo;

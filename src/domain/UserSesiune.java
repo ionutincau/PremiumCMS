@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 public class UserSesiune {
+
     @Id @GeneratedValue private int id;
     @ManyToOne(cascade = CascadeType.ALL )private User user;
     @ManyToOne(cascade = CascadeType.ALL) private Sesiune sesiune;

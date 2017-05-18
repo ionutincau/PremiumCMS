@@ -7,7 +7,8 @@ import javax.persistence.*;
  */
 @Entity
 public class EventSesiune {
-    @Id @GeneratedValue private int id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id;
     @ManyToOne(cascade = CascadeType.ALL )private Event event;
     @ManyToOne(cascade = CascadeType.ALL) private Sesiune sesiune;
 

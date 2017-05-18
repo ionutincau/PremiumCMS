@@ -39,7 +39,7 @@ public class ProposalsTabUI implements Initializable,Observer{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         proposalsListView.setFixedCellSize(48);
-        proposalsListView.getItems().addAll(0, (ArrayList)controller.getProposal());
+        proposalsListView.getItems().addAll(0, (ArrayList)controller.getUserProposals());
         ProposalADD();
         ProposalEdit();
         ProposalDelete();
@@ -60,8 +60,7 @@ public class ProposalsTabUI implements Initializable,Observer{
         }
     }
 
-    public void ProposalADD()
-    {
+    public void ProposalADD() {
         proposalAddButton.setOnAction(event -> loadWindow("Add",null));
     }
 

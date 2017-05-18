@@ -1,5 +1,6 @@
 package Proposals;
 
+import Login.LoginController;
 import domain.PCProposal;
 import domain.Proposal;
 import domain.User;
@@ -18,6 +19,10 @@ public class ProposalsController extends Observable {
 
     public List<Proposal> getProposal() {
         return provider.selectProposals();
+    }
+
+    public List<Proposal> getUserProposals() {
+        return provider.getUserProposals(LoginController.getInstance().getUser().getId_user());
     }
 
     public void add(User user, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, String sesiune) {
@@ -82,9 +87,9 @@ public class ProposalsController extends Observable {
             for (User user: pcList) { // for each user
                 Proposal proposal = null;
                 for (PCProposal p : user.getPcProps()) { // for each proposal in user bid
-                    boolean t = usedProposals[proposalList.indexOf(p.getProposal())] < nrReviewers; // proposal is not taken // todo: check if proposal from proposal list is the same as user.pcproposal.proposal
+                    boolean t = usedProposals[getProposalIndex(proposalList, p.getProposal())] < nrReviewers; // proposal is not taken
                     boolean h = !foundRelation(splittedProposals, user, p.getProposal()); // user doesn't have the proposal already
-                    boolean d = p.getBid() != 0; // if user doesn't refused the proposal // todo: check bid in pc-proposal table
+                    boolean d = p.getBid() != 0; // if user doesn't refused the proposal
                     if (t && h && d) {
                         proposal = p.getProposal();
                         break;
@@ -94,9 +99,9 @@ public class ProposalsController extends Observable {
                     // if we didn't found any available proposal that user wants
                     // take an available proposal that user didn't refuse
                     for (Proposal p : proposalList) { // for each proposal in the list
-                        boolean t = usedProposals[proposalList.indexOf(p)] < nrReviewers; // proposal is not taken
+                        boolean t = usedProposals[getProposalIndex(proposalList, p)] < nrReviewers; // proposal is not taken
                         boolean h = !foundRelation(splittedProposals, user, p); // user doesn't have the proposal already
-                        boolean d = !refusedProposal(user, p); // if user doesn't refused the proposal // todo: check bid in pc-proposal table
+                        boolean d = !refusedProposal(user, p); // if user doesn't refused the proposal
                         if (t && h && d) {
                             proposal = p;
                             break;
@@ -104,12 +109,10 @@ public class ProposalsController extends Observable {
                     }
                 }
                 if (proposal != null) { // if we found an available proposal give it to user
-                    PCProposal pcp = new PCProposal();
-                    pcp.setUser(user);
-                    pcp.setProposal(proposal);
+                    PCProposal pcp = new PCProposal(user, proposal);
                     splittedProposals.add(pcp); // add the proposal to user
                     userGotProposal = true; // a user got a proposal
-                    usedProposals[proposalList.indexOf(proposal)]++; // update taken proposals
+                    usedProposals[getProposalIndex(proposalList, proposal)]++; // update taken proposals
                 }
             }
             if (!userGotProposal) break; // stop if nobody got a proposal this turn
@@ -124,8 +127,13 @@ public class ProposalsController extends Observable {
         }
 
         provider.updatePCProposalTable(splittedProposals);
-        provider.updateUserTableOnlyPC(pcList);
-        provider.updateProposalTableOnlyPC(proposalList);
+    }
+
+    private int getProposalIndex(List<Proposal> proposalList, Proposal proposal) {
+        for (Proposal p : proposalList) {
+            if (p.getId_proposal() == proposal.getId_proposal()) return proposalList.indexOf(p);
+        }
+        return -1;
     }
 
     /**
@@ -138,7 +146,7 @@ public class ProposalsController extends Observable {
     private boolean foundRelation(List<PCProposal> splittedProposals, User user, Proposal proposal) {
         boolean found = false;
         for (PCProposal p : splittedProposals) {
-            if (p.getUser() == user && p.getProposal() == proposal) found = true; //todo: check if user == user proposal == proposal
+            if (p.getUser().getId_user() == user.getId_user() && p.getProposal().getId_proposal() == proposal.getId_proposal()) found = true;
         }
         return found;
     }
@@ -153,7 +161,7 @@ public class ProposalsController extends Observable {
     private boolean refusedProposal(User user, Proposal proposal) {
         Collection<PCProposal> pcp = user.getPcProps();
         for (PCProposal pc : pcp) {
-            if (pc.getProposal() == proposal) { //todo: check if user == user proposal == proposal
+            if (pc.getProposal().getId_proposal() == proposal.getId_proposal()) {
                 if (pc.getBid() == 0) return true;
             }
         }
@@ -163,7 +171,7 @@ public class ProposalsController extends Observable {
     private Collection<PCProposal> getUserProposals(List<PCProposal> splittedProposals, User user) {
         ArrayList<PCProposal> new_pcp = new ArrayList();
         for (PCProposal pc : splittedProposals) {
-            if (pc.getUser() == user) new_pcp.add(pc);
+            if (pc.getUser().getId_user() == user.getId_user()) new_pcp.add(pc);
         }
         return new_pcp;
     }
@@ -171,31 +179,11 @@ public class ProposalsController extends Observable {
     private Collection<PCProposal> getProposalUsers(List<PCProposal> splittedProposals, Proposal proposal) {
         ArrayList<PCProposal> new_pcp = new ArrayList();
         for (PCProposal pc : splittedProposals) {
-            if (pc.getProposal() == proposal) new_pcp.add(pc);
+            if (pc.getProposal().getId_proposal() == proposal.getId_proposal()) new_pcp.add(pc);
         }
         return new_pcp;
     }
 
-    // todo: verifica daca propsal din proposalList e aceeasi ca cea din user.getproposals
-    public void test() {/*
-        HashMap<User, ArrayList<Proposal>> splittedProposals = new HashMap<>();
-        User u1 = new User();
-        u1.setUserName("jo1");
-        User u2 = new User();
-        u2.setUserName("jo2");
-        ArrayList<Proposal> a1 = new ArrayList();
-        Proposal p1 = new Proposal();
-        p1.setName("prop1");
-        Proposal p2 = new Proposal();
-        p2.setName("prop2");
-        a1.add(p1);
-        splittedProposals.put(u1, a1);
-        splittedProposals.get(u1).add(p2);
-        List<Proposal> l = splittedProposals.get(u1);
-        for (Proposal p : l) {
-            System.out.println("***" + p.getName());
-        }*/
-    }
     public String getNameAuthor(int id)
     {
         return provider.getAuthorName(id);

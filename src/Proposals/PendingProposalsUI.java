@@ -10,7 +10,6 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javafx.css.PseudoClass;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,19 +20,16 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class PendingProposalsUI implements Initializable, Observer {
     private ProposalsController controller = new ProposalsController();
-    @FXML
-    private ListView<Proposal> proposalsListView1;
-    @FXML
-    private Button proposalViewButton;
+
+    @FXML private ListView<Proposal> proposalsListView1;
+    @FXML private Button proposalViewButton;
 
     public PendingProposalsUI() {
         this.controller.addObserver(this);
@@ -60,10 +56,10 @@ public class PendingProposalsUI implements Initializable, Observer {
             stage.setTitle(name);
             stage.setScene(new Scene(root, 300.0D, 250.0D));
             stage.show();
-        } catch (IOException var7) {
+        }
+        catch (IOException var7) {
             var7.printStackTrace();
         }
-
     }
 
     public void SelectShowDet() {
@@ -73,7 +69,6 @@ public class PendingProposalsUI implements Initializable, Observer {
             if(proposal != null) {
                 this.loadWindow("Detalii", proposal);
             }
-
         });
     }
 
@@ -100,16 +95,17 @@ public class PendingProposalsUI implements Initializable, Observer {
         public void updateItem(Proposal item, boolean empty) {
             this.controller = new ProposalsController();
             super.updateItem(item, empty);
-            if(item != null) {
-                if(this.controller.checkIfPass(LoginController.getInstance().getUser(), item)) {
+            if (item != null) {
+                if (this.controller.checkIfPass(LoginController.getInstance().getUser(), item)) {
                     this.rect.setFill(Color.web("#D50000"));
                     this.setGraphic(this.rect);
                 }
-                if(this.controller.checkIfReview(LoginController.getInstance().getUser(), item)) {
+                if (this.controller.checkIfReview(LoginController.getInstance().getUser(), item)) {
                     this.rect.setFill(Color.web("#76FF03"));
                     this.setGraphic(this.rect);
                 }
-            } else {
+            }
+            else {
                 this.setGraphic((Node)null);
             }
             setText(empty ? null : item.toString());

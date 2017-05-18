@@ -11,6 +11,7 @@ import java.util.Collection;
 
 @Entity
 public class Proposal {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_proposal;
     @OneToMany(mappedBy = "proposal") private Collection<PCProposal> pcProps = new ArrayList<PCProposal>();
     @OneToMany private Collection<User> users = new ArrayList<User>();

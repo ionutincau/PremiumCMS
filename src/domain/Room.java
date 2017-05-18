@@ -7,6 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 public class Room {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id_room;
     @Column private String name;
     @Column private String location;

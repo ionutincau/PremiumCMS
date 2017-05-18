@@ -8,7 +8,8 @@ import javax.persistence.*;
 
 @Entity
 public class PCProposal {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)  private int id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private int id;
     @ManyToOne(cascade = CascadeType.ALL) private User user;
     @ManyToOne(cascade = CascadeType.ALL) private Proposal proposal;
     @Column private int bid;
@@ -16,7 +17,14 @@ public class PCProposal {
     @Column private String review;
 
     public PCProposal() {
+
     }
+
+    public PCProposal(User user, Proposal proposal) {
+        this.user = user;
+        this.proposal = proposal;
+    }
+
     public PCProposal(User user, Proposal proposal, int bid, int nota, String review) {
         this.user = user;
         this.proposal = proposal;
