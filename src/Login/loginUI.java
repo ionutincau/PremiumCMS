@@ -21,9 +21,8 @@ public class loginUI {
 
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
-    @FXML private TabPane tabPane;
     @FXML private Tab loginTab;
-
+    private TabPane tabPane;
 
     public loginUI() {
 
@@ -67,6 +66,9 @@ public class loginUI {
             else if (usertype.equals("participant")) {
 
             }
+
+            Tab logout = FXMLLoader.load(this.getClass().getResource("logout.fxml"));
+            tabPane.getTabs().add(logout);
         }
         catch (IOException ex) {
             UtilFunctions.showInfo("Application can't manage usertype " + usertype + "\nContact system administrator");
@@ -93,7 +95,8 @@ public class loginUI {
             handler.handle(null);
         }
         else {
-            tab.getTabPane().getTabs().remove(tab);
+            tabPane = tab.getTabPane();
+            tabPane.getTabs().remove(tab);
         }
     }
 }

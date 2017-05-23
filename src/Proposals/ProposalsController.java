@@ -188,8 +188,8 @@ public class ProposalsController extends Observable {
     {
         return provider.getAuthorName(id);
     }
-    public void UpdatePcProposal(User user, Proposal proposal, int bid, int nota, String review)
-    {
+
+    public void UpdatePcProposal(User user, Proposal proposal, int bid, int nota, String review) {
         PCProposal pcProposal=new PCProposal();
         pcProposal.setUser(user);
         pcProposal.setProposal(proposal);
@@ -201,13 +201,13 @@ public class ProposalsController extends Observable {
         setChanged();
         notifyObservers();
     }
-    public boolean checkIfReview(User user,Proposal proposal)
-    {
+
+    public boolean checkIfReview(User user,Proposal proposal) {
         return provider.checkIfProposalExistReview(proposal,user);
     }
+
     public boolean checkIfPass(User user,Proposal proposal)
     {
         return provider.checkIfProposalExistPass(proposal,user);
     }
-
 }
