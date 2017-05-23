@@ -13,7 +13,7 @@ public class PCProposal {
     @ManyToOne(cascade = CascadeType.ALL) private User user;
     @ManyToOne(cascade = CascadeType.ALL) private Proposal proposal;
     @Column private int bid;
-    @Column private int nota;
+    @Column private String nota;
     @Column private String review;
 
     public PCProposal() {
@@ -25,7 +25,7 @@ public class PCProposal {
         this.proposal = proposal;
     }
 
-    public PCProposal(User user, Proposal proposal, int bid, int nota, String review) {
+    public PCProposal(User user, Proposal proposal, int bid, String nota, String review) {
         this.user = user;
         this.proposal = proposal;
         this.bid = bid;
@@ -65,11 +65,11 @@ public class PCProposal {
         this.bid = bid;
     }
 
-    public int getNota() {
+    public String getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(String nota) {
         this.nota = nota;
     }
 

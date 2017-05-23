@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proposals.EvaluateProposalUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proposals.EvaluateProposalUIController">
     <children>
         <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -72,17 +77,22 @@
                         </Hyperlink>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefHeight="50.0" spacing="20.0">
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Button id="proposalStrongAcceptButton" fx:id="proposalStrongAcceptButton" minWidth="50.0" mnemonicParsing="false" text="STRONG ACCEPT" HBox.hgrow="NEVER" />
-                        <Button id="proposalAcceptButton" fx:id="proposalAcceptButton" layoutX="220.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="ACCEPT" />
-                        <Button id="proposalWeakAcceptButton" fx:id="proposalWeakAcceptButton" layoutX="245.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="WEAK ACCEPT" />
-                        <Button id="proposalBorderlineButton" fx:id="proposalBorderlineButton" layoutX="270.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="BORDERLINE" />
-                        <Button id="proposalWeakRejectButton" fx:id="proposalWeakRejectButton" layoutX="195.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="WEAK REJECT" />
-                        <Button id="proposalRejectButton" fx:id="proposalRejectButton" layoutX="430.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="REJECT" />
-                        <Button id="proposalStrongRejectButton" fx:id="proposalStrongRejectButton" layoutX="430.0" layoutY="20.0" minWidth="50.0" mnemonicParsing="false" text="STRONG REJECT" />
+                        <Label minWidth="100.0" text="Nota" />
+                        <ChoiceBox id="NotaProposalChoiceBox" fx:id="NotaProposalChoiceBox" prefWidth="3000.0" />
                     </children>
                 </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label minWidth="100.0" text="Review" />
+                        <TextField id="reviewTextField" fx:id="reviewTextField" prefWidth="3000.0" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefHeight="50.0" spacing="20.0">
+               <children>
+                  <Button id="saveButton" fx:id="saveButton" mnemonicParsing="false" text="Salveaza evaluare" />
+               </children></HBox>
             </children>
             <padding>
                 <Insets left="20.0" right="10.0" top="10.0" />

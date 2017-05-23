@@ -3,6 +3,7 @@ package Proposals;
 import Login.LoginController;
 import domain.PCProposal;
 import domain.Proposal;
+import domain.ProposalEvalPC;
 import domain.User;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class ProposalsController extends Observable {
 
     public List<Proposal> proposals = new ArrayList<>();
     public ProposalsProvider provider = new ProposalsProvider();
+    public List<ProposalEvalPC> evalProp = new ArrayList<>();
 
     public List<Proposal> getProposal() {
         return provider.selectProposals();
@@ -25,10 +27,29 @@ public class ProposalsController extends Observable {
         return provider.getUserProposals(LoginController.getInstance().getUser().getId_user());
     }
 
+    public List<ProposalEvalPC> getPcProposalEvalList() {
+        System.out.println(1);
+        evalProp = provider.getEvaluationList(LoginController.getInstance().getUser().getId_user());
+        System.out.println(2);
+        return evalProp;
+    }
+
+    public ArrayList getCalificativList() {
+        ArrayList<String> calificativList = new ArrayList();
+        calificativList.add("strong accept");
+        calificativList.add("accept");
+        calificativList.add("weak accept");
+        calificativList.add("borderline paper");
+        calificativList.add("weak reject");
+        calificativList.add("reject");
+        calificativList.add("Strong reject");
+        return calificativList;
+    }
+
     public void add(User user, String other_authors, String name, String keywords, String topics, String type, Date send_date, Date accept_date, String status, String abs, String document, String sesiune) {
         int id_autor = user.getId_user();
         int id_sesiune = provider.getIdSesiuneByName(sesiune);
-        Proposal proposal = new Proposal(id_autor, other_authors, name, keywords, topics, type,send_date, accept_date, status, abs, document, id_sesiune);
+        Proposal proposal = new Proposal(id_autor, other_authors, name, keywords, topics, type, send_date, accept_date, status, abs, document, id_sesiune);
 
         proposals.add(proposal);
         provider.insert(proposal);
@@ -65,13 +86,11 @@ public class ProposalsController extends Observable {
         notifyObservers();
     }
 
-    public List SessionName()
-    {
+    public List SessionName() {
         return provider.getAllNameeSessions();
     }
 
-    public String getSessionName(int id_session)
-    {
+    public String getSessionName(int id_session) {
         return provider.getSessionName(id_session);
     }
 
@@ -84,7 +103,7 @@ public class ProposalsController extends Observable {
 
         while (!proposalList.isEmpty()) { // give one proposal to each pc
             boolean userGotProposal = false; // false if none of the users got any proposal this turn
-            for (User user: pcList) { // for each user
+            for (User user : pcList) { // for each user
                 Proposal proposal = null;
                 for (PCProposal p : user.getPcProps()) { // for each proposal in user bid
                     boolean t = usedProposals[getProposalIndex(proposalList, p.getProposal())] < nrReviewers; // proposal is not taken
@@ -117,15 +136,12 @@ public class ProposalsController extends Observable {
             }
             if (!userGotProposal) break; // stop if nobody got a proposal this turn
         }
-
         for (User user : pcList) { // for each user
             user.setPcProps(getUserProposals(splittedProposals, user)); // set the new proposal list for user
         }
-
         for (Proposal proposal : proposalList) {
             proposal.setPCProps(getProposalUsers(splittedProposals, proposal)); // set the new proposal list for proposal
         }
-
         provider.updatePCProposalTable(splittedProposals);
     }
 
@@ -138,6 +154,7 @@ public class ProposalsController extends Observable {
 
     /**
      * check splittedProposals if it has a PCProposal with user and proposal
+     *
      * @param splittedProposals
      * @param user
      * @param proposal
@@ -146,7 +163,8 @@ public class ProposalsController extends Observable {
     private boolean foundRelation(List<PCProposal> splittedProposals, User user, Proposal proposal) {
         boolean found = false;
         for (PCProposal p : splittedProposals) {
-            if (p.getUser().getId_user() == user.getId_user() && p.getProposal().getId_proposal() == proposal.getId_proposal()) found = true;
+            if (p.getUser().getId_user() == user.getId_user() && p.getProposal().getId_proposal() == proposal.getId_proposal())
+                found = true;
         }
         return found;
     }
@@ -154,6 +172,7 @@ public class ProposalsController extends Observable {
 
     /**
      * check if user refused the proposal
+     *
      * @param user
      * @param proposal
      * @return
@@ -184,13 +203,12 @@ public class ProposalsController extends Observable {
         return new_pcp;
     }
 
-    public String getNameAuthor(int id)
-    {
+    public String getNameAuthor(int id) {
         return provider.getAuthorName(id);
     }
-    public void UpdatePcProposal(User user, Proposal proposal, int bid, int nota, String review)
-    {
-        PCProposal pcProposal=new PCProposal();
+
+    public void UpdatePcProposal(User user, Proposal proposal, int bid, String nota, String review) {
+        PCProposal pcProposal = new PCProposal();
         pcProposal.setUser(user);
         pcProposal.setProposal(proposal);
         pcProposal.setBid(bid);
@@ -201,13 +219,16 @@ public class ProposalsController extends Observable {
         setChanged();
         notifyObservers();
     }
-    public boolean checkIfReview(User user,Proposal proposal)
-    {
-        return provider.checkIfProposalExistReview(proposal,user);
-    }
-    public boolean checkIfPass(User user,Proposal proposal)
-    {
-        return provider.checkIfProposalExistPass(proposal,user);
+    public boolean checkIfReview(User user, Proposal proposal) {
+        return provider.checkIfProposalExistReview(proposal, user);
     }
 
+    public boolean checkIfPass(User user, Proposal proposal) {
+        return provider.checkIfProposalExistPass(proposal, user);
+    }
+
+    public String GetSessionName(int id_session)
+    {
+        return provider.getSessionName(id_session);
+    }
 }
