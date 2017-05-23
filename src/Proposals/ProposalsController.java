@@ -189,7 +189,7 @@ public class ProposalsController extends Observable {
         return provider.getAuthorName(id);
     }
 
-    public void UpdatePcProposal(User user, Proposal proposal, int bid, int nota, String review) {
+    public void UpdatePcProposal(User user, Proposal proposal, int bid, String nota, String review) {
         PCProposal pcProposal=new PCProposal();
         pcProposal.setUser(user);
         pcProposal.setProposal(proposal);
