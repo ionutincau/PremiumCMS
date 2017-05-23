@@ -66,8 +66,11 @@ public class loginUI {
                 this.tabPane.getTabs().add(paymentTab);
             }
             else if (usertype.equals("participant")) {
+                Tab presentationTab=FXMLLoader.load(this.getClass().getResource("../Presentations/presentation_tab.fxml"));
                 Tab paymentTab = FXMLLoader.load(this.getClass().getResource("../Payments/payment_tab.fxml"));
                 this.tabPane.getTabs().add(paymentTab);
+                this.tabPane.getTabs().add(presentationTab);
+
             }
 
             Tab logout = FXMLLoader.load(this.getClass().getResource("logout.fxml"));
