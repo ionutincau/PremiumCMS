@@ -96,4 +96,14 @@ public class AddProposalUI implements Initializable{
             e.printStackTrace();
         }
     }
+
+    public void addAbstract() {
+        String fileName = UtilFunctions.ChooseFile();
+        proposalAbstractPathLabel.setText(fileName);
+    }
+
+    public void addPaper() {
+        String fileName = UtilFunctions.ChooseFile();
+        proposalDocumentPathLabel.setText(fileName);
+    }
 }

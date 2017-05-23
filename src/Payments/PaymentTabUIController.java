@@ -1,7 +1,9 @@
 package Payments;
 
+import Events.EventsController;
 import Login.LoginController;
 import Utils.UtilFunctions;
+import domain.Event;
 import domain.Payment;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -62,19 +64,20 @@ public class PaymentTabUIController implements Initializable, Observer {
     {
         boolean paid = paymentController.userPaid();
         // if user already paid show no ammound and disable pay button
-
+        EventsController eventsController = new EventsController();
+        Event event = (Event) eventsController.getAllEvents().get(0);
         if (paid)
         {
             setPaymentAmmount(00.00);
             setPaymentCurrency("$");
-            setPaymentDueDate(new Date(2017,8,24));  //Todo replace with what date?
+            setPaymentDueDate(event.getD_taxes());
             paymentPayButton.setDisable(true);
         }
         else
         {
             setPaymentAmmount(57.90);
             setPaymentCurrency("$");
-            setPaymentDueDate(new Date(2017,8,24));  //Todo replace with what date?
+            setPaymentDueDate(event.getD_taxes());
             setPaymentPayButtonAction();
         }
     }
@@ -89,8 +92,7 @@ public class PaymentTabUIController implements Initializable, Observer {
         paymentCurrency.setText(currency);
     }
 
-    public void setPaymentDueDate(Date date)
-    {
+    public void setPaymentDueDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         paymentDueDate.setText(dateFormat.format(date));
     }

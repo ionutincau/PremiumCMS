@@ -17,7 +17,6 @@ public class EventsController extends Observable{
 
     public List getAllEvents() {
         events=provider.select();
-        System.out.println(events);
         return events;
     }
 

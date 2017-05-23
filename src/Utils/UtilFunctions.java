@@ -19,20 +19,18 @@ public class UtilFunctions {
         alert.show();
     }
 
-    public static String ChoseFile(){
-        FileChooser fc=new FileChooser();
-        fc.setInitialDirectory(new File("C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src"));
-        File selectedFile=fc.showOpenDialog(null);
+    public static String ChooseFile(){
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src\\documents"));
+        File selectedFile = fc.showOpenDialog(null);
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF File","*.pdf"));
-        String name="";
-        if(selectedFile!=null)
-        {
-            name=selectedFile.getName();
+        String name = "";
+        if(selectedFile != null) {
+            name = selectedFile.getName();
         }
         else {
             System.out.print("File not Valid!");
         }
-        System.out.println(name);
         return name;
     }
 }
