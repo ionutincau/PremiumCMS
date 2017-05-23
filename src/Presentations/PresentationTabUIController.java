@@ -20,21 +20,22 @@ import java.util.ResourceBundle;
 /**
  * Created by ASUS on 23.May.2017.
  */
-public class PresentationTabUIController implements Initializable,Observer {
+
+public class PresentationTabUIController implements Initializable, Observer {
     private PresentationsController controller;
 
-    @FXML
-    private ListView<String> presentationsListView;
-    @FXML
-    private Button presentationSeeDetailsButton;
+    @FXML private ListView presentationsListView;
+    @FXML private Button presentationSeeDetailsButton;
 
+    public PresentationTabUIController() {
+
+    }
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         presentationsListView.setFixedCellSize(48);
-        presentationsListView.getItems().addAll(0,(ArrayList)controller.getAllPresentations());
+        presentationsListView.getItems().addAll(0, controller.getAllPresentations());
         //presentationAddDoc();
-
     }
 
     private void loadWindow(String name, Presentation presentation) {
@@ -66,12 +67,9 @@ public class PresentationTabUIController implements Initializable,Observer {
     }
 */
 
-
-
     @Override
     public void update(Observable o, Object arg) {
         presentationsListView.setFixedCellSize(48);
         presentationsListView.getItems().addAll(0,(ArrayList)controller.getAllPresentations());
-
     }
 }

@@ -1,5 +1,6 @@
 package Events;
 
+import Proposals.ProposalsController;
 import Utils.UtilFunctions;
 import domain.Event;
 import javafx.collections.FXCollections;
@@ -14,23 +15,10 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.CheckComboBox;
 
-/**
- * Created by Aurelian on 5/10/2017.
- */
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import org.controlsfx.control.CheckComboBox;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -61,11 +49,12 @@ public class AddEventUIController implements Initializable{
 
     @FXML
     public void initialize(URL fxmlFileLocation, ResourceBundle resourceBundle) {
-        // TODO replace example sessionsList below with real sessionsList from DB
         ObservableList<String> sessionsList = FXCollections.observableArrayList();
-        sessionsList.add("Horia");
-        sessionsList.add("Closca");
-        sessionsList.add("Crisan");
+        ProposalsController controller = new ProposalsController();
+        List<String> ses = controller.SessionName();
+        for (String s : ses) {
+            sessionsList.add(s);
+        }
         checkComboBox = new CheckComboBox<String>(sessionsList);
         checkComboBox.setPrefWidth(3000);
 
