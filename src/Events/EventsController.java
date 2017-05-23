@@ -19,7 +19,6 @@ public class EventsController extends Observable{
         events=provider.select();
         return events;
     }
-
     public void add(String name, Date start, Date end, String web_page, String location, String description, Date d_abstract, Date d_proposal, Date d_evaluation, Date d_taxes) {
         Event e=new Event(name,start,end,web_page,location,description,d_abstract,d_proposal,d_evaluation,d_taxes);
         events.add(e);

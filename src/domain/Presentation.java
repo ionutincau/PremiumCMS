@@ -14,6 +14,17 @@ public class Presentation {
     @Column private String demo;
     @Column private String name;
 
+
+    public Presentation(){
+
+    }
+    public Presentation(int id_presentation,User speaker,String demo,String name){
+        this.id_presentation=id_presentation;
+        this.speaker=speaker;
+        this.demo=demo;
+        this.name=name;
+    }
+
     public int getId_presentation() {return id_presentation;}
     public void setId_presentation(int id_presentation) {this.id_presentation = id_presentation;}
     public String getDemo() {return demo;}
@@ -23,4 +34,8 @@ public class Presentation {
     public User getSpeaker() {return speaker;}
     public void setSpeaker(User speaker) {this.speaker = speaker;}
 
+    @Override
+    public String toString() {
+        return name + ",    speaker: ,    " + demo;
+    }
 }
