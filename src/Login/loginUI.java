@@ -48,13 +48,13 @@ public class loginUI {
                 Tab propuneriPendingTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/pending_proposals.fxml"));
                 Tab evenimentTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Events/events_tab.fxml"));
                 Tab pending = (Tab)FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
-                Tab propuneriTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
+                //Tab propuneriTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
                 Tab propuneriEvaluareTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/evaluate_proposals_tab.fxml"));
                 Tab generateTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/generate.fxml"));
                 this.tabPane.getTabs().add(sessionTab);
                 this.tabPane.getTabs().add(evenimentTab);
                 this.tabPane.getTabs().add(pending);
-                this.tabPane.getTabs().add(propuneriTab);
+                //this.tabPane.getTabs().add(propuneriTab);
                 this.tabPane.getTabs().add(propuneriPendingTab);
                 this.tabPane.getTabs().add(propuneriEvaluareTab);
                 this.tabPane.getTabs().add(generateTab);
@@ -64,10 +64,14 @@ public class loginUI {
                 tabPane.getTabs().add(pending);
                 Tab propuneriPendingTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/pending_proposals.fxml"));
                 this.tabPane.getTabs().add(propuneriPendingTab);
+                Tab propuneriEvaluareTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/evaluate_proposals_tab.fxml"));
+                this.tabPane.getTabs().add(propuneriEvaluareTab);
             }
             else if (usertype.equals("author")) {
                 Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
                 tabPane.getTabs().add(propuneriTab);
+                Tab presentationTab = FXMLLoader.load(this.getClass().getResource("../Presentations/presentation_tab.fxml"));
+                this.tabPane.getTabs().add(presentationTab);
                 Tab paymentTab = FXMLLoader.load(this.getClass().getResource("../Payments/payment_tab.fxml"));
                 this.tabPane.getTabs().add(paymentTab);
             }
@@ -77,6 +81,8 @@ public class loginUI {
                 this.tabPane.getTabs().add(paymentTab);
                 Tab presentationTab = FXMLLoader.load(this.getClass().getResource("../Presentations/presentation_tab.fxml"));
                 this.tabPane.getTabs().add(presentationTab);
+                Tab presentationuserTab = FXMLLoader.load(this.getClass().getResource("../Presentations/presentations_tab_user.fxml"));
+                this.tabPane.getTabs().add(presentationuserTab);
             }
 
             Tab logout = FXMLLoader.load(this.getClass().getResource("logout.fxml"));

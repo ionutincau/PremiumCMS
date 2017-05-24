@@ -1,5 +1,6 @@
 package Presentations;
 
+import Login.LoginController;
 import Utils.UtilFunctions;
 import domain.Presentation;
 import javafx.fxml.FXML;
@@ -39,6 +40,9 @@ public class PresentationTabUIController implements Initializable, Observer {
         presentationsListView.setFixedCellSize(48);
         presentationsListView.getItems().addAll(0, (ArrayList)controller.getAllPresentations());
         presentationAddDoc();
+        if (LoginController.getInstance().getUser().getType().equals("participant")) {
+            presentationAddDocButton.setVisible(false);
+        }
     }
 
     private void loadWindow(String name, Presentation presentation) {
