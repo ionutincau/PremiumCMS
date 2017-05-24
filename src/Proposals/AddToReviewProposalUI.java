@@ -1,6 +1,7 @@
 package Proposals;
 
 import Login.LoginController;
+import Utils.UtilFunctions;
 import domain.Proposal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,5 +67,31 @@ public class AddToReviewProposalUI implements Initializable{
         controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,0, "",null);
         Stage stage = (Stage) proposalPassbutton.getScene().getWindow();
         stage.close();
+    }
+
+    public void seeAbstract() {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                String f = "../documents/" + proposalAbstractFilename.getText();
+                File myFile = new File(f);
+                Desktop.getDesktop().open(myFile);
+            }
+            catch (IOException ex) {
+                UtilFunctions.showInfo("No application registered for PDFs");
+            }
+        }
+    }
+
+    public void seeFile() {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                String f = "../documents/" + proposalDocumentFilename.getText();
+                File myFile = new File(f);
+                Desktop.getDesktop().open(myFile);
+            }
+            catch (IOException ex) {
+                UtilFunctions.showInfo("No application registered for PDFs");
+            }
+        }
     }
 }

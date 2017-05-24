@@ -66,5 +66,4 @@ public class EvaluateProposalsTabUIController implements Initializable{
         });
     }
 
-
 }

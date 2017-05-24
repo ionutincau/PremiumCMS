@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Tab id="generate" fx:id="generate" text="Review" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proposals.Generate">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="458.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <children>
+                            <Label id="nrLabel" fx:id="nrLabel" text="Number of reviewers:   "></Label>
+                            <TextField id="nrText" fx:id="nrText" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                        </children>
+                    </HBox>
+                    <children>
+                        <Button id="logoutButton" fx:id="generateButton" maxHeight="-Infinity"  maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#generate" prefHeight="25.0" prefWidth="200.0" text="Split proposals" />
+                    </children>
+                    <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </content>
+</Tab>

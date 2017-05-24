@@ -40,7 +40,7 @@
                                 <Insets />
                             </HBox.margin>
                         </Label>
-                        <Hyperlink id="proposalAbstractSeeFile" fx:id="proposalAbstractSeeFile" text="See file" />
+                        <Hyperlink onAction="#seeAbstract" id="proposalAbstractSeeFile" fx:id="proposalAbstractSeeFile" text="See file" />
                     </children>
                     <VBox.margin>
                         <Insets />
@@ -54,7 +54,7 @@
                                 <Insets />
                             </HBox.margin>
                         </Label>
-                        <Hyperlink id="proposalDocumentSeeFile" fx:id="proposalDocumentSeeFile" text="See file" />
+                        <Hyperlink onAction="#seeFile" id="proposalDocumentSeeFile" fx:id="proposalDocumentSeeFile" text="See file" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefHeight="50.0" spacing="40.0">
