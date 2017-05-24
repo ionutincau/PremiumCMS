@@ -14,7 +14,7 @@ public class PresentationsController extends Observable {
     public PresentationsProvider provider;
     public List<Presentation> presentations = new ArrayList<Presentation>();
 
-    public List getAllPresentations() {
+    public List<Presentation> getAllPresentations() {
         presentations=provider.select();
         return presentations;
     }

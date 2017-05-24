@@ -35,7 +35,9 @@ public class Presentation {
     public void setSpeaker(User speaker) {this.speaker = speaker;}
 
     @Override
-    public String toString() {
-        return name + ",    speaker: ,    " + demo;
+    public String toString()
+    {
+        return name + "    " + speaker.getFirstName() + " " + speaker.getLastName() + "    " + demo;
     }
+
 }

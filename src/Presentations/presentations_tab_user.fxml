@@ -14,7 +14,7 @@
                         <ListView id="presentationsListView" fx:id="presentationsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefWidth="45.0" spacing="40.0" VBox.vgrow="NEVER">
                             <children>
-                                <Button id="presentationParticipateButton" fx:id="presentationParticipateButton" mnemonicParsing="false" prefWidth="100.0" text="See details" />
+                                <Button id="presentationParticipateButton" fx:id="presentationParticipateButton" mnemonicParsing="false" prefWidth="100.0" text="Participate" />
                             </children>
                         </HBox>
                     </children>
