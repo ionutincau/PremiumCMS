@@ -120,8 +120,9 @@ public class EvaluateProposalUIController {
     }
     public void Update()
     {
-        Proposal proposal=new Proposal(proposalEvalPC.getId_author(),proposalEvalPC.getOther_authors(),proposalEvalPC.getName(),proposalEvalPC.getKeywords(),proposalEvalPC.getTopics(),proposalEvalPC.getType(),proposalEvalPC.getSend_date(),proposalEvalPC.getAccept_date(),proposalEvalPC.getStatus(),proposalEvalPC.getAbs(),proposalEvalPC.getDocument(),proposalEvalPC.getId_session());
-        controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,0,NotaProposalChoiceBox.getSelectionModel().getSelectedItem(),reviewTextField.getText());
+        //Proposal proposal=new Proposal(proposalEvalPC.getId_author(),proposalEvalPC.getOther_authors(),proposalEvalPC.getName(),proposalEvalPC.getKeywords(),proposalEvalPC.getTopics(),proposalEvalPC.getType(),proposalEvalPC.getSend_date(),proposalEvalPC.getAccept_date(),proposalEvalPC.getStatus(),proposalEvalPC.getAbs(),proposalEvalPC.getDocument(),proposalEvalPC.getId_session());
+        Proposal proposal=controller.get_spec_proposal(proposalEvalPC.getId_proposal());
+        controller.updatePCProEval(proposalEvalPC.getId_PCproposal(),LoginController.getInstance().getUser(),proposal,0,NotaProposalChoiceBox.getSelectionModel().getSelectedItem(),reviewTextField.getText());
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
     }

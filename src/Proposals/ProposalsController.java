@@ -229,4 +229,14 @@ public class ProposalsController extends Observable {
     {
         return provider.getSessionName(id_session);
     }
+    public void updatePCProEval(int id_pcProposal, User user, Proposal proposal, int bid, String nota, String review) {
+        PCProposal pcProposal = new PCProposal(user, proposal, bid, nota, review);
+        pcProposal.setId(id_pcProposal);
+        this.provider.UpdatePCProposalEval(pcProposal);
+    }
+    public Proposal get_spec_proposal(int id_proposal)
+    {
+        System.out.println(id_proposal);
+        return provider.getProposal(id_proposal);
+    }
 }

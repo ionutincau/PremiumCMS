@@ -8,6 +8,7 @@ import java.sql.Date;
 public class ProposalEvalPC extends Proposal {
     private String review;
     private String nota;
+    private int id_PCproposal;
 
     public ProposalEvalPC() {
     }
@@ -18,10 +19,20 @@ public class ProposalEvalPC extends Proposal {
         this.nota = nota;
     }
 
-    public ProposalEvalPC(Proposal proposal, String review, String nota) {
-        super(proposal.getId_author(),proposal.getOther_authors(),proposal.getName(),proposal.getKeywords(),proposal.getTopics(),proposal.getType(),proposal.getSend_date(),proposal.getAccept_date(),proposal.getStatus(),proposal.getAbs(),proposal.getDocument(),proposal.getId_session());
+    public int getId_PCproposal() {
+        return id_PCproposal;
+    }
+
+    public void setId_PCproposal(int id_PCproposal) {
+        this.id_PCproposal = id_PCproposal;
+    }
+
+    public ProposalEvalPC(Proposal proposal, String review, int id_PCproposal, String nota) {
+        super(proposal.getId_proposal(),proposal.getId_author(),proposal.getOther_authors(),proposal.getName(),proposal.getKeywords(),proposal.getTopics(),proposal.getType(),proposal.getSend_date(),proposal.getAccept_date(),proposal.getStatus(),proposal.getAbs(),proposal.getDocument(),proposal.getId_session());
         this.review = review;
         this.nota = nota;
+
+        this.id_PCproposal=id_PCproposal;
     }
 
     public String getReview() {

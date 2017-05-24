@@ -1,5 +1,6 @@
 package Proposals;
 
+import Login.LoginController;
 import domain.PCProposal;
 import domain.Proposal;
 import domain.ProposalEvalPC;
@@ -97,7 +98,20 @@ public class ProposalsProvider {
         session.close();
         return id_sesiune;
     }
-
+    public Proposal getProposal(int id_proposal)
+    {
+        System.out.println(id_proposal);
+        Proposal proposal=null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query =session.createQuery("from Proposal where id_proposal=:id_proposal");
+        query.setParameter("id_proposal", id_proposal);
+        proposal=(Proposal) query.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return proposal;
+    }
     public List getAllNameeSessions() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
@@ -193,6 +207,16 @@ public class ProposalsProvider {
         session.getTransaction().commit();
         session.close();
     }
+    public void UpdatePCProposalEval(PCProposal pcProposal)
+    {
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.clear();
+        session.update(pcProposal);
+        session.getTransaction().commit();
+        session.close();
+    }
     public void UpdatePCProposal(PCProposal pcProposal) {
         PCProposal result=null;
         SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
@@ -218,6 +242,25 @@ public class ProposalsProvider {
         }
         session.getTransaction().commit();
         session.close();
+    }
+    public int GetIDPCProposal(PCProposal pcProposal) {
+        int val=0;
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        System.out.println(pcProposal.getProposal().getId_proposal());
+        Query query = session.createQuery("select pc.id from PCProposal pc where user.id="+ LoginController.getInstance().getUser().getId_user() +" and proposal.id="+pcProposal.getProposal().getId_proposal());
+//        query.setParameter("user1", pcProposal.getUser());
+//        query.setParameter("proposal1", pcProposal.getProposal());
+        try {
+            val =(int) query.getSingleResult();
+        }
+        catch (Exception e)
+        {e.printStackTrace();}
+        session.clear();
+        session.getTransaction().commit();
+        session.close();
+        return val;
     }
     public boolean checkIfProposalExistReview(Proposal proposal1, User user1) {
         PCProposal PCresults = null;
@@ -285,7 +328,7 @@ public class ProposalsProvider {
             Proposal proposal = (Proposal) aRow[0];
             PCProposal pcProposal = (PCProposal) aRow[1];
             User user=(User) aRow[2];
-            ProposalEvalPC proposalEvalPC=new ProposalEvalPC(proposal,pcProposal.getReview(),pcProposal.getNota());
+            ProposalEvalPC proposalEvalPC=new ProposalEvalPC(proposal,pcProposal.getReview(),pcProposal.getId(),pcProposal.getNota());
             list.add(proposalEvalPC);
         }
 
