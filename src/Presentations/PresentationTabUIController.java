@@ -1,5 +1,6 @@
 package Presentations;
 
+import Utils.UtilFunctions;
 import domain.Presentation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,29 +25,31 @@ import java.util.ResourceBundle;
 public class PresentationTabUIController implements Initializable, Observer {
     private PresentationsController controller;
 
-    @FXML private ListView presentationsListView;
     @FXML private Button presentationSeeDetailsButton;
+    @FXML private Button presentationAddDocButton;
+    @FXML private ListView presentationsListView;
 
     public PresentationTabUIController() {
-
+            this.controller=new PresentationsController();
+            this.controller.addObserver(this);
     }
 
     @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         presentationsListView.setFixedCellSize(48);
-        presentationsListView.getItems().addAll(0, controller.getAllPresentations());
-        //presentationAddDoc();
+        presentationsListView.getItems().addAll(0, (ArrayList)controller.getAllPresentations());
+        presentationAddDoc();
     }
 
     private void loadWindow(String name, Presentation presentation) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_demo.fxml"));
             AnchorPane root = loader.load();
-            PresentationAddDocUI addDocUI = loader.<PresentationAddDocUI>getController();
-            addDocUI.initData(name,presentation,controller);
+            PresentationAddDocUI editController = loader.<PresentationAddDocUI>getController();
+            editController.initData(name,presentation,controller);
             Stage stage = new Stage();
             stage.setTitle(name);
-            stage.setScene(new Scene(root, 300, 250));
+            stage.setScene(new Scene(root, 800, 400));
             stage.show();
         }
         catch (IOException e) {
@@ -55,8 +58,8 @@ public class PresentationTabUIController implements Initializable, Observer {
     }
 
 
-   /** public void presentationAddDoc() {
-        presentationSeeDetailsButton.setOnAction(event -> {
+    public void presentationAddDoc() {
+        presentationAddDocButton.setOnAction(event -> {
             presentationsListView.getSelectionModel().getSelectedIndex();
             Presentation presentation = (Presentation) presentationsListView.getSelectionModel().getSelectedItem();
             if (presentation != null) {
@@ -65,11 +68,22 @@ public class PresentationTabUIController implements Initializable, Observer {
             else UtilFunctions.showInfo("Selectati o prezentare");
         });
     }
-*/
+
+    public void presentationDetails() {
+        presentationSeeDetailsButton.setOnAction(event -> {
+            presentationsListView.getSelectionModel().getSelectedIndex();
+            Presentation presentation = (Presentation) presentationsListView.getSelectionModel().getSelectedItem();
+            if (presentation != null) {
+                loadWindow("SeeDetails", presentation);
+            }
+            else UtilFunctions.showInfo("Selectati o prezentare");
+        });
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
-        presentationsListView.setFixedCellSize(48);
+        presentationsListView.getItems().clear();
         presentationsListView.getItems().addAll(0,(ArrayList)controller.getAllPresentations());
     }
 }

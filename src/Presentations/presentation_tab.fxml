@@ -13,6 +13,7 @@
                         <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefWidth="45.0" spacing="40.0" VBox.vgrow="NEVER">
                             <children>
                                 <Button id="presentationSeeDetailsButton" fx:id="presentationSeeDetailsButton" mnemonicParsing="false" prefWidth="100.0" text="See details" />
+                                <Button id="presentationAddButton" fx:id="presentationAddDocButton" mnemonicParsing="false" prefWidth="100.0" text="AddDoc" />
                             </children>
                         </HBox>
                     </children>
