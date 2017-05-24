@@ -11,10 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -35,6 +32,9 @@ public class AddProposalUI implements Initializable{
     @FXML private TextField proposalTopicsTextField;
     @FXML private TextField proposalNameTextField;
     @FXML private Button proposalAbstractFilePicker;
+
+    private String ab = "";
+    private String pa = "";
 
     public AddProposalUI() {
 
@@ -66,7 +66,7 @@ public class AddProposalUI implements Initializable{
             java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
             if (proposalSessionChoiceBox.getSelectionModel().getSelectedItem() != null) {
                 User user = LoginController.getInstance().getUser();
-                controller.add(user, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), "", date, null, "pending", null, null, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
+                controller.add(user, proposalOtherAuthorsNameTextField.getText(), proposalNameTextField.getText(), proposalKeywordsTextField.getText(), proposalTopicsTextField.getText(), "", date, null, "pending", ab, pa, proposalSessionChoiceBox.getSelectionModel().getSelectedItem());
                 Stage stage = (Stage) proposalOKButton.getScene().getWindow();
                 stage.close();
             }
@@ -95,5 +95,17 @@ public class AddProposalUI implements Initializable{
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void addAbstract() {
+        String fileName = UtilFunctions.ChooseFile();
+        proposalAbstractPathLabel.setText(fileName);
+        ab = fileName;
+    }
+
+    public void addPaper() {
+        String fileName = UtilFunctions.ChooseFile();
+        proposalDocumentPathLabel.setText(fileName);
+        pa = fileName;
     }
 }

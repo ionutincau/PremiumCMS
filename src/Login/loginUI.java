@@ -21,9 +21,8 @@ public class loginUI {
 
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
-    @FXML private TabPane tabPane;
     @FXML private Tab loginTab;
-
+    private TabPane tabPane;
 
     public loginUI() {
 
@@ -51,7 +50,6 @@ public class loginUI {
                 Tab pending = (Tab)FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 Tab propuneriTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
                 Tab propuneriEvaluareTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/evaluate_proposals_tab.fxml"));
-                System.out.println("OK");
                 this.tabPane.getTabs().add(sessionTab);
                 this.tabPane.getTabs().add(evenimentTab);
                 this.tabPane.getTabs().add(pending);
@@ -62,14 +60,24 @@ public class loginUI {
             else if (usertype.equals("pc")) {
                 Tab pending = FXMLLoader.load(this.getClass().getResource("../User/pending_users_tab.fxml"));
                 tabPane.getTabs().add(pending);
+                Tab propuneriPendingTab = (Tab)FXMLLoader.load(this.getClass().getResource("../Proposals/pending_proposals.fxml"));
+                this.tabPane.getTabs().add(propuneriPendingTab);
             }
             else if (usertype.equals("author")) {
                 Tab propuneriTab = FXMLLoader.load(this.getClass().getResource("../Proposals/proposals_tab.fxml"));
                 tabPane.getTabs().add(propuneriTab);
+                Tab paymentTab = FXMLLoader.load(this.getClass().getResource("../Payments/payment_tab.fxml"));
+                this.tabPane.getTabs().add(paymentTab);
             }
             else if (usertype.equals("participant")) {
-
+                Tab presentationTab = FXMLLoader.load(this.getClass().getResource("../Presentations/presentation_tab.fxml"));
+                Tab paymentTab = FXMLLoader.load(this.getClass().getResource("../Payments/payment_tab.fxml"));
+                this.tabPane.getTabs().add(paymentTab);
+                this.tabPane.getTabs().add(presentationTab);
             }
+
+            Tab logout = FXMLLoader.load(this.getClass().getResource("logout.fxml"));
+            tabPane.getTabs().add(logout);
         }
         catch (IOException ex) {
             UtilFunctions.showInfo("Application can't manage usertype " + usertype + "\nContact system administrator");
@@ -96,7 +104,8 @@ public class loginUI {
             handler.handle(null);
         }
         else {
-            tab.getTabPane().getTabs().remove(tab);
+            tabPane = tab.getTabPane();
+            tabPane.getTabs().remove(tab);
         }
     }
 }

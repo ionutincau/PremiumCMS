@@ -154,7 +154,6 @@ public class ProposalsController extends Observable {
 
     /**
      * check splittedProposals if it has a PCProposal with user and proposal
-     *
      * @param splittedProposals
      * @param user
      * @param proposal
@@ -172,7 +171,6 @@ public class ProposalsController extends Observable {
 
     /**
      * check if user refused the proposal
-     *
      * @param user
      * @param proposal
      * @return

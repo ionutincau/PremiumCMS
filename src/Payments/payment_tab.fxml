@@ -14,7 +14,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label minWidth="120.0" text="Ammount:" />
-                                <Label id="paymentAmmount" fx:id="paymentAmmount" text="47.95">
+                                <Label id="paymentAmmount" fx:id="paymentAmmount" text="">
                                     <padding>
                                         <Insets left="40.0" />
                                     </padding>
@@ -44,7 +44,7 @@
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                             <children>
                                 <Label minWidth="120.0" text="Card number:" />
-                                <TextField id="paymentCardNumber" fx:id="paymentCardNumber" />
+                                <TextField id="paymentCardNumber" fx:id="paymentCardNumber" promptText="1234-5678-9123-4567"/>
                             </children>
                             <padding>
                                 <Insets left="40.0" />
@@ -62,7 +62,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                             <children>
                                 <Label minWidth="120.0" text="CVV:" />
-                                <TextField id="paymentCardCVV" fx:id="paymentCardCVV" />
+                                <TextField id="paymentCardCVV" fx:id="paymentCardCVV" promptText="012" />
                             </children>
                             <padding>
                                 <Insets left="40.0" />

@@ -54,13 +54,13 @@ public class AddToReviewProposalUI implements Initializable{
     }
 
     public void Review() {
-        controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,1,null,null);
+        controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,1, "",null);
         Stage stage = (Stage) proposalReviewButton.getScene().getWindow();
         stage.close();
     }
 
     public void Pass() {
-        controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,0,null,null);
+        controller.UpdatePcProposal(LoginController.getInstance().getUser(),proposal,0, "",null);
         Stage stage = (Stage) proposalPassbutton.getScene().getWindow();
         stage.close();
     }

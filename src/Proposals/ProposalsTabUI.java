@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * Created by Aurelian on 5/11/2017.
  */
 
-public class ProposalsTabUI implements Initializable,Observer{
+public class ProposalsTabUI implements Initializable, Observer{
 
     private ProposalsController controller;
 
@@ -44,6 +44,7 @@ public class ProposalsTabUI implements Initializable,Observer{
         ProposalEdit();
         ProposalDelete();
     }
+    
     private void loadWindow(String name, Proposal proposal) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_proposal.fxml"));
