@@ -2,7 +2,9 @@ package Proposals;
 
 import domain.PCProposal;
 import domain.Proposal;
+import domain.ProposalEvalPC;
 import domain.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -205,7 +207,6 @@ public class ProposalsProvider {
         }
         catch (Exception e)
         {}
-        System.out.println(result+"---------------------------------------------------");
         if (result==null)
         {
             session.save(pcProposal);
@@ -256,5 +257,44 @@ public class ProposalsProvider {
         session.getTransaction().commit();
         session.close();
         return PCresults != null;
+    }
+    public int getNumberPc() {
+        int nrPc=0;
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("select count(*) from User where type='pc'");
+        try {
+            nrPc=query.getFirstResult();
+        } catch (Exception var8) {
+            ;
+        }
+        session.getTransaction().commit();
+        session.close();
+        return nrPc;
+    }
+    public List<ProposalEvalPC> getEvaluationList(int id_pc)
+    {
+        List<Object[]> listOb;
+        List<ProposalEvalPC> list=new ArrayList<>();
+        SessionFactory sessionFactory = (new Configuration()).configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        listOb =(List<Object[]>)session.createQuery("from Proposal as p inner join p.pcProps ps inner join ps.user u where u.id_user ="+id_pc).list();
+        for (Object[] aRow : listOb) {
+            Proposal proposal = (Proposal) aRow[0];
+            PCProposal pcProposal = (PCProposal) aRow[1];
+            User user=(User) aRow[2];
+            ProposalEvalPC proposalEvalPC=new ProposalEvalPC(proposal,pcProposal.getReview(),pcProposal.getNota());
+            list.add(proposalEvalPC);
+        }
+
+        session.getTransaction().commit();
+        session.close();
+//        for (Object[] o:listOb)
+//        {
+//            Proposal p=o[0];
+//        }
+        return list;
     }
 }
