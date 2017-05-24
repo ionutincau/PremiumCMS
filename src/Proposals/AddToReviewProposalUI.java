@@ -70,28 +70,13 @@ public class AddToReviewProposalUI implements Initializable{
     }
 
     public void seeAbstract() {
-        if (Desktop.isDesktopSupported()) {
-            try {
-                String f = "../documents/" + proposalAbstractFilename.getText();
-                File myFile = new File(f);
-                Desktop.getDesktop().open(myFile);
-            }
-            catch (IOException ex) {
-                UtilFunctions.showInfo("No application registered for PDFs");
-            }
-        }
+        String f = "C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src\\documents\\abstract.pdf";
+        UtilFunctions.seeFile(f);
     }
 
     public void seeFile() {
-        if (Desktop.isDesktopSupported()) {
-            try {
-                String f = "../documents/" + proposalDocumentFilename.getText();
-                File myFile = new File(f);
-                Desktop.getDesktop().open(myFile);
-            }
-            catch (IOException ex) {
-                UtilFunctions.showInfo("No application registered for PDFs");
-            }
-        }
+        //String f = "../documents/" + proposalDocumentFilename.getText();
+        String f = "C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src\\documents\\paper.pdf";
+        UtilFunctions.seeFile(f);
     }
 }
