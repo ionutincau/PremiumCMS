@@ -5,8 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ASUS on 23.May.2017.
@@ -15,11 +14,10 @@ public class PresentationsProvider {
 
     public List select()
     {
-        List<Presentation> presentations=new ArrayList<>();
         SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
         Session session=sessionFactory.openSession();
         session.beginTransaction();
-        presentations=session.createQuery("from Presentation").getResultList();
+        List<Presentation> presentations=session.createQuery("from Presentation").getResultList();
         session.getTransaction().commit();
         session.close();
         return presentations;

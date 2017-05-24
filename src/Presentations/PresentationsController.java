@@ -11,12 +11,11 @@ import java.util.Observable;
  * Created by ASUS on 23.May.2017.
  */
 public class PresentationsController extends Observable {
-    public PresentationsProvider provider;
-    public List<Presentation> presentations = new ArrayList<Presentation>();
+    public PresentationsProvider provider=new PresentationsProvider();
+    public List<Presentation> presentations = new ArrayList<>();
 
     public List<Presentation> getAllPresentations() {
-        presentations=provider.select();
-        return presentations;
+        return provider.select();
     }
 
     public void add(int id_presentation, User speaker,String demo, String name){

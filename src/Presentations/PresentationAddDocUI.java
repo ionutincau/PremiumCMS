@@ -1,7 +1,6 @@
 package Presentations;
 
 import domain.Presentation;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +18,7 @@ import java.util.ResourceBundle;
 public class PresentationAddDocUI implements Initializable {
     private PresentationsController controller;
     private Presentation presentation;
-
+    public String name="";
     @FXML
     private Button demoChooseFileButton;
 
@@ -29,29 +28,31 @@ public class PresentationAddDocUI implements Initializable {
     @FXML
     private Button addDemoButton;
 
-    public String DemoChoseFileButtonAction(ActionEvent event){
-        FileChooser fc=new FileChooser();
-        fc.setInitialDirectory(new File("C:\\Users\\ASUS\\Desktop\\PremiumISS\\PremiumCMS\\src\\"));
-        File selectedFile=fc.showOpenDialog(null);
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF File","*.pdf"));
-        String name="";
-        if(selectedFile!=null)
-        {
-            name=selectedFile.getName();
-        }
-        else {
-            System.out.print("File not Valid!");
-        }
-        return name;
+    public void DemoChoseFileButtonAction(){
+            FileChooser fc=new FileChooser();
+            File selectedFile=fc.showOpenDialog(null);
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF File","*.pdf"));
+
+            if(selectedFile!=null)
+            {
+                name=selectedFile.getName();
+            }
+            else {
+                System.out.print("File not Valid!");
+            }
     }
+    public void addDoc(){
+        controller.addDoc(presentation.getId_presentation(),name);
+    }
+
     public void initData(String name, Presentation presentation, PresentationsController controller) {
         this.controller = controller;
         this.presentation = presentation;
-
+        this.demoChooseFileButton.setOnAction(event -> DemoChoseFileButtonAction());
+        this.addDemoButton.setOnAction(event -> addDoc());
         demoChooseFileButton.setVisible(true);
         demoFileLabel.setVisible(true);
         addDemoButton.setVisible(true);
-
 
     }
     @Override
