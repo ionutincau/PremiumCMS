@@ -62,7 +62,7 @@ public class EvaluateProposalsTabUIController implements Initializable{
             if (pcEval != null) {
                 loadWindow("Evaluare", pcEval);
             }
-            else UtilFunctions.showInfo("Selectati un eveniment");
+            else UtilFunctions.showInfo("Selectati o propunere");
         });
     }
 

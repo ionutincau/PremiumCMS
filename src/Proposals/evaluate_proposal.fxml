@@ -55,7 +55,7 @@
                                 <Insets />
                             </HBox.margin>
                         </Label>
-                        <Hyperlink id="proposalAbstractSeeFileLink" fx:id="proposalAbstractSeeFileLink" text="See file">
+                        <Hyperlink id="proposalAbstractSeeFileLink" fx:id="proposalAbstractSeeFileLink" onAction="#seeAbstract" text="See file">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
@@ -73,7 +73,7 @@
                                 <Insets />
                             </HBox.margin>
                         </Label>
-                        <Hyperlink id="proposalDocumentSeeFileLink" fx:id="proposalDocumentSeeFileLink" text="See file">
+                        <Hyperlink id="proposalDocumentSeeFileLink" fx:id="proposalDocumentSeeFileLink" onAction="#seeFile" text="See file">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>

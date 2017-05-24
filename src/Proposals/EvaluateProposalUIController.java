@@ -126,4 +126,16 @@ public class EvaluateProposalUIController {
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
     }
+
+
+    public void seeAbstract() {
+        String f = "C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src\\documents\\abstract.pdf";
+        UtilFunctions.seeFile(f);
+    }
+
+    public void seeFile() {
+        //String f = "../documents/" + proposalDocumentFilename.getText();
+        String f = "C:\\Users\\ionut\\IdeaProjects\\PremiumCMS\\src\\documents\\paper.pdf";
+        UtilFunctions.seeFile(f);
+    }
 }
